@@ -1,7 +1,26 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smart Tution</title>
 <style>
-*{box-sizing:border-box}body{font-family:system-ui,Arial;margin:0;background:#f2f5fc;color:#14213d}header{background:#153c91;color:white;padding:22px 16px}header h1{margin:0}main{max-width:850px;margin:auto;padding:16px}.card{background:white;padding:18px;border-radius:15px;margin:12px 0;box-shadow:0 2px 12px #10235b12}input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}button{background:#2457e7;color:white;border:0;border-radius:9px;padding:11px 14px;margin:3px;cursor:pointer}button.secondary{background:#e4ebff;color:#153c91}button.danger{background:#a9273d}.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.muted{color:#66758c;font-size:13px}.hide{display:none!important}.item{border-bottom:1px solid #e2e8f0;padding:12px 0}.item:last-child{border:0}.nav{display:flex;gap:5px;flex-wrap:wrap;position:fixed;bottom:0;left:0;right:0;background:white;padding:10px;justify-content:space-around;z-index:100;box-shadow:0 -2px 10px #0002}
-body{padding-bottom:90px}.notice{background:#fff2cc;padding:12px;border-radius:9px;font-size:13px}h2{font-size:21px}.pill{background:#e7efff;padding:5px 9px;border-radius:30px;font-size:12px}label{font-weight:650;font-size:13px}
+*{box-sizing:border-box}body{font-family:system-ui,Arial;margin:0;background:#f2f5fc;color:#14213d}header{background:#153c91;color:white;padding:22px 16px}header h1{margin:0}main{max-width:850px;margin:auto;padding:16px}.card{background:white;padding:18px;border-radius:15px;margin:12px 0;box-shadow:0 2px 12px #10235b12}input,select,textarea{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit}button{background:#2457e7;color:white;border:0;border-radius:9px;padding:11px 14px;margin:3px;cursor:pointer}button.secondary{background:#e4ebff;color:#153c91}button.danger{background:#a9273d}.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}.muted{color:#66758c;font-size:13px}.hide{display:none!important}.item{border-bottom:1px solid #e2e8f0;padding:12px 0}.item:last-child{border:0}.nav{display:flex;
+  flex-wrap:nowrap;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:white;
+  padding:8px 4px;
+  gap:3px;
+  z-index:100;
+  box-shadow:0 -2px 10px #0002;
+}
+.nav button{
+  flex:1;
+  min-width:0;
+  margin:0;
+  padding:12px 2px;
+  font-size:11px;
+  white-space:nowrap;
+}
+body{padding-bottom:85px}.notice{background:#fff2cc;padding:12px;border-radius:9px;font-size:13px}h2{font-size:21px}.pill{background:#e7efff;padding:5px 9px;border-radius:30px;font-size:12px}label{font-weight:650;font-size:13px}
 </style></head><body><header><div class="row"><div><h1>🎓 Smart Tution</h1><span id="who">Secure teacher workspace</span></div><button id="logout" class="hide secondary" onclick="signOutUser()">Log out</button></div></header><main>
 <div id="setup" class="card hide"><h2>Setup required</h2><p>Owner: configure Firebase and OWNER_UID in this HTML file before using this version. See the setup guide. Do not enter real student information yet.</p></div>
 <div id="auth" class="card hide"><h2>Teacher account</h2><label>Email</label><input id="email" type="email" autocomplete="email"><label>Password (at least 6 characters)</label><input id="password" type="password" autocomplete="current-password"><div><button onclick="login()">Log in</button><button class="secondary" onclick="register()">Request teacher access</button></div><p class="muted">New accounts remain pending until the owner approves them.</p></div>
