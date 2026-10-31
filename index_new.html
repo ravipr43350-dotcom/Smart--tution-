@@ -53,4 +53,75 @@ function render(){if(!user||!profile||$("workspace").classList.contains("hide"))
 const q=$("studentSearch").value.trim().toLowerCase(),filtered=students.filter(s=>(s.name+" "+classLabel(s)).toLowerCase().includes(q));const groups=new Map();for(const s of filtered){const label=classLabel(s);if(!groups.has(label))groups.set(label,[]);groups.get(label).push(s)}const sortedGroups=[...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}));$("studentList").innerHTML=sortedGroups.map(([label,group])=>`<div class="class-section"><div class="row"><h3 class="class-heading">📘 Class ${escapeHTML(label)}</h3><span class="muted">${group.length} student${group.length===1?"":"s"}</span></div>${sortStudents(group).map(studentCard).join("")}</div>`).join("")||'<div class="empty">No students found.</div>';  
 $("feeTotal").textContent="Collected: ₹"+amount.toLocaleString("en-IN")+" / ₹"+expected.toLocaleString("en-IN");$("feeList").innerHTML=sortStudents(students).map(s=>`<div class="item"><div class="row"><div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span><div class="muted">₹${Number(s.fee||0).toLocaleString("en-IN")}</div></div><span class="pill ${payments[paidKey(s.id)]?"paid":""}">${payments[paidKey(s.id)]?"Paid":"Unpaid"}</span></div><div class="actions"><button class="secondary" onclick="togglePaid('${s.id}')">Mark ${payments[paidKey(s.id)]?"unpaid":"paid"}</button>${!payments[paidKey(s.id)]?`<button onclick="reminder('${s.id}')">WhatsApp reminder ↗</button>`:""}</div></div>`).join("")||'<div class="empty">Add students to track fees.</div>';  
 $("attList").innerHTML=sortStudents(students).map(s=>{const k=$("attDate").value+"_"+s.id;return `<div class="item"><div class="row"><div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span></div><span class="pill">${escapeHTML(attendance[k]||"Not marked")}</span></div><div class="actions"><button class="secondary" onclick="mark('${s.id}','Present')">Present</button><button class="secondary" onclick="mark('${s.id}','Absent')">Absent</button></div></div>`}).join("")||'<div class="empty">Add students to mark attendance.</div>'}  
-function renderTeachers(docs){const teachers=docs.filter(d=>d.id!==OWNER_UID);$("teacherList").innerHTML=teachers.map(d=>{const u=d.data(),status=u.status||"pending";return `<div class="item"><div class="row"><b>${escapeHTML(u.email||d.id)}</b><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="actions" style="margin-top:9px"><button class="success" onclick="setAccess('${d.id}','approved')">Approve / Restore</button><button class="secondary" onclick="setAccess('${d.id}','denied')">Deny</button><button class="danger" onclick="setAccess('${d.id}','revoked')">Revoke</button><button class="danger" onclick="deleteRequest('${d.id}')">Delete request</button></div></div>`}).join("")||'<div class="empty">No teacher requests y
+function renderTeachers(docs){const teachers=docs.filter(d=>d.id!==OWNER_UID);$("teacherList").innerHTML=teachers.map(d=>{const u=d.data(),status=u.status||"pending";return `<div class="item"><div class="row"><b>${escapeHTML(u.email||d.id)}</b><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="actions" style="margin-top:9px"><button class="success" onclick="setAccess('${d.id}','approved')">Approve / Restore</button><button class="secondary" onclick="setAccess('${d.id}','denied')">Deny</button><button class="danger" onclick="setAccess('${d.id}','revoked')">Revoke</button><button class="danger" onclick="deleteRequest('${d.id}')">Delete request</button></div></div>`}).join("") || '<div class="empty">No teacher requests yet.</div>';
+}
+
+async function setAccess(uid, status) {
+  if (!confirm(
+    (status === "approved" ? "Approve" :
+     status === "denied" ? "Deny" : "Revoke") +
+    " this teacher?"
+  )) return;
+
+  try {
+    await db.collection("users").doc(uid).update({ status });
+  } catch (e) {
+    err(e);
+  }
+}
+
+async function deleteRequest(uid) {
+  if (!confirm(
+    "Delete this teacher request? The Firebase Authentication account and student data will not be deleted."
+  )) return;
+
+  try {
+    await db.collection("users").doc(uid).delete();
+    alert("Teacher request deleted.");
+  } catch (e) {
+    err(e);
+  }
+}
+
+// Set today's date and current month
+const today = new Date();
+
+$("feeMonth").value =
+  today.getFullYear() + "-" +
+  String(today.getMonth() + 1).padStart(2, "0");
+
+$("attDate").value =
+  today.getFullYear() + "-" +
+  String(today.getMonth() + 1).padStart(2, "0") + "-" +
+  String(today.getDate()).padStart(2, "0");
+
+// Start Firebase
+if (
+  firebaseConfig.apiKey === "REPLACE_ME" ||
+  OWNER_UID === "REPLACE_WITH_OWNER_UID" ||
+  typeof firebase === "undefined"
+) {
+  screen("setup");
+} else {
+  firebase.initializeApp(firebaseConfig);
+
+  auth = firebase.auth();
+  db = firebase.firestore();
+
+  db.enablePersistence({ synchronizeTabs: true }).catch(() => {});
+
+  auth.onAuthStateChanged(u => {
+    clearListeners();
+    user = u;
+    profile = null;
+
+    if (u) {
+      refreshAccount();
+    } else {
+      screen("auth");
+    }
+  });
+}
+</script>
+</body>
+</html>
