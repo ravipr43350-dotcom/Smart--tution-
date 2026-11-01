@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090d1c">
+<meta name="description" content="Smart Tution - Premium teacher workspace for students, fees and attendance.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Smart Tution">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png"><title>Smart Tution | Premium Dark</title>
+<style>
+:root{color-scheme:dark;--bg:#090d1c;--surface:#121a30;--surface2:#19233d;--ink:#f3f5ff;--muted:#9caac9;--line:#2b3552;--blue:#667cff;--violet:#9874ff;--green:#4ad7aa;--red:#ff718e}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 100% 0%,#222453 0,transparent 40%),var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Arial,sans-serif;padding-bottom:105px;min-height:100vh}header{background:linear-gradient(115deg,#11182e,#242251 68%,#342264);padding:26px 18px 33px;border-radius:0 0 26px 26px;border-bottom:1px solid #41406b}header .inner{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}header h1{font-size:clamp(21px,4vw,29px);margin:6px 0;letter-spacing:-.6px}header small{color:#c0c9ee;font-size:11px;letter-spacing:1.5px}header #who{letter-spacing:0;font-size:12px;overflow-wrap:anywhere}main{max-width:1000px;margin:auto;padding:12px 15px 35px}.card{background:linear-gradient(150deg,#17213a,#11192d);padding:19px;border-radius:19px;margin:15px 0;border:1px solid #2c3654;box-shadow:0 10px 26px #03061045}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid .card{margin:0}.stat{position:relative;overflow:hidden}.stat:before{content:"";position:absolute;right:-25px;top:-30px;width:85px;height:85px;border-radius:50%;background:#6c63ff18}.stat span{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:clamp(21px,4vw,29px);margin-top:8px;overflow-wrap:anywhere}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.muted{color:var(--muted);font-size:13px}.hide{display:none!important}h2{font-size:23px;margin:17px 0 7px;letter-spacing:-.5px}h3{font-size:17px;margin:0 0 10px}button{border:1px solid #8a87ff33;background:linear-gradient(120deg,#5c6cf6,#855bf0);color:#fff;border-radius:12px;padding:11px 14px;font:650 13px system-ui;cursor:pointer;transition:transform .15s,filter .15s}button:hover{filter:brightness(1.12)}button:active{transform:scale(.97)}button.secondary{background:#263353;color:#c9d6ff;border-color:#384c7c}button.danger{background:#44243c;color:#ff9fb3;border-color:#703b58}button.success{background:#1c463f;color:#7ff3c9;border-color:#2c6759}button:disabled{opacity:.5;cursor:not-allowed}input,textarea,select{display:block;width:100%;padding:12px 13px;border:1px solid #3a4767;border-radius:11px;font:inherit;margin:7px 0 14px;background:#0d1528;color:var(--ink);outline:none}input:focus,textarea:focus,select:focus{border-color:#8d83ff;box-shadow:0 0 0 3px #7e6bff20}input::placeholder{color:#7181a6}label{font-size:13px;font-weight:650;color:#cbd6f2}.actions{display:flex;flex-wrap:wrap;gap:7px}.actions button{margin:0}.item{border-bottom:1px solid var(--line);padding:15px 0}.item:last-child{border-bottom:0}.pill{display:inline-block;border-radius:30px;padding:5px 10px;font-size:11px;font-weight:750;background:#453821;color:#f3c681}.pill.paid,.pill.approved,.pill.Present{background:#173d36;color:#6be9bc}.pill.revoked,.pill.denied,.pill.Absent{background:#49263c;color:#ff9bb2}.class-section{border:1px solid var(--line);border-radius:15px;padding:14px;margin:15px 0;background:#111a2e}.class-heading{margin:0 0 4px;color:#b3b7ff;font-size:16px}.bar{height:12px;background:#2b3350;border-radius:20px;overflow:hidden}.bar>div{height:100%;width:0;background:linear-gradient(90deg,#665ef6,#46d4c2);transition:width .25s}.nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#12192cf5;backdrop-filter:blur(18px);display:flex;justify-content:space-around;gap:2px;padding:8px 5px max(10px,env(safe-area-inset-bottom));border-top:1px solid #3a3b69;box-shadow:0 -7px 25px #02041066}.nav button{flex:1;min-width:0;margin:0;padding:9px 1px;background:transparent;border:0;color:#8794b5;font-size:10px;line-height:1.5;border-radius:10px}.nav button.active{background:linear-gradient(135deg,#313668,#40356c);color:#e7e4ff}.nav button .icon{display:block;font-size:19px}.notice{background:#302b23;color:#f0d6a7;padding:14px;border:1px solid #564732;border-radius:12px;font-size:13px;line-height:1.5}.empty{text-align:center;color:var(--muted);padding:25px 5px}.auth-card{max-width:480px;margin:28px auto}.section-label{color:var(--muted);font-size:13px;margin:6px 0 18px}.tiny{font-size:12px;color:var(--muted)}.accent{color:#afa6ff}.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.filter-row input,.filter-row select{margin-bottom:7px}.queue{border:1px solid #56508a;background:#1b1b38;border-radius:15px;padding:15px;margin:12px 0}.queue a{display:inline-block;background:#294f43;color:#9af3cb;padding:9px 13px;text-decoration:none;border-radius:10px;margin:5px 0}.queue .item{overflow-wrap:anywhere}.badge{font-size:12px;color:#a4a9ed}.hero-tag{display:inline-block;background:#ffffff12;border:1px solid #ffffff20;border-radius:30px;padding:6px 11px;font-size:11px;letter-spacing:.5px}.tuition-logo{width:76px;height:76px;object-fit:contain;border-radius:16px;background:#fff;padding:5px;border:1px solid #55518b}.chart-bars{display:grid;gap:12px;margin-top:12px}.chart-row{display:grid;grid-template-columns:75px 1fr auto;align-items:center;gap:9px;font-size:12px;color:var(--muted)}.chart-track{height:13px;border-radius:20px;background:#2b3350;overflow:hidden}.chart-track>div{height:100%;border-radius:20px;background:linear-gradient(90deg,#667cff,#b17aff)}@media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}.nav{max-width:1000px;margin:auto;border-radius:16px 16px 0 0}.nav button{font-size:12px}}
+</style></head><body>
+<header><div class="inner"><div><span class="hero-tag">✦ PREMIUM TEACHER WORKSPACE</span><h1>🎓 <span id="brand">Smart Tution</span></h1><small id="who">Your teaching, beautifully organized</small></div><button id="logout" class="hide secondary" onclick="signOutUser()">Log out</button></div></header>
+<main>
+<div id="setup" class="card hide"><h2>Setup required</h2><p>Firebase configuration or owner ID is missing, or Firebase scripts could not load.</p></div>
+<div id="auth" class="card auth-card hide"><h2>Welcome back <span class="accent">✦</span></h2><p class="muted">Sign in with an account created by the app owner.</p><label>Email</label><input id="email" type="email" autocomplete="username" maxlength="254"><label>Password</label><input id="password" type="password" autocomplete="current-password"><div class="actions"><button onclick="login()">Log in →</button><button class="secondary" onclick="registerTeacher()">Request teacher access</button></div><p class="tiny">New teacher accounts remain pending until the owner approves them. Creating an account does not grant access to student data.</p></div>
+<div id="waiting" class="card auth-card hide"><h2 id="waitTitle">Awaiting approval</h2><p id="waitMessage">Your account is waiting for owner approval.</p><button class="secondary" onclick="refreshAccount()">Check access again</button></div>
+<div id="workspace" class="hide">
+<section id="dashboard" class="panel"><h2>Dashboard <span class="accent">✦</span></h2><p class="section-label" id="dashboardMonth"></p><div class="card" id="homeLogoCard"><div class="row"><div><h3 id="homeTuitionTitle">Your tuition</h3><p class="muted">Your tuition logo</p></div><img id="homeLogo" class="tuition-logo hide" alt="Tuition logo"></div></div><div class="grid"><div class="card stat"><span>👥 Total students</span><strong id="totalStudents">0</strong></div><div class="card stat"><span>₹ Collected fees</span><strong id="collectedFees">₹0</strong></div></div><div class="card"><div class="row"><h3>Class-wise dashboard</h3><span class="badge">Selected class</span></div><label>Filter by class</label><select id="homeClassFilter" onchange="render()"><option value="">All classes</option></select><div class="grid"><div class="card stat"><span>Students in class</span><strong id="homeClassTotal">0</strong></div><div class="card stat"><span>Fees paid</span><strong id="homeClassPaid">0</strong></div><div class="card stat"><span>Fees pending</span><strong id="homeClassUnpaid">0</strong></div><div class="card stat"><span>Collected amount</span><strong id="homeClassAmount">₹0</strong></div></div><div class="row"><h3>Fee collection</h3><b class="accent" id="feePercent">0%</b></div><div class="bar"><div id="feeProgress"></div></div><p class="muted" id="feeSummary"></p><h3 style="margin-top:18px">Collection chart</h3><div id="homeFeeChart" class="chart-bars"></div></div><div class="card"><h3>Quick actions</h3><div class="actions"><button onclick="tab('students');toggleForm(true)">+ Add student</button><button class="secondary" onclick="tab('fees')">View monthly fees</button><button class="secondary" onclick="tab('attendance')">Take attendance</button></div></div></section>
+<section id="students" class="panel hide"><div class="row"><h2>Students</h2><button onclick="toggleForm(true)">+ Add student</button></div><p id="count" class="muted">0 students</p><div id="studentForm" class="card hide"><h3 id="formTitle">Add student</h3><input id="studentId" type="hidden"><label>Student name *</label><input id="studentName" maxlength="100"><label>Class *</label><input id="studentClass" maxlength="50" placeholder="e.g. 11th"><label>Parent WhatsApp number</label><input id="studentPhone" type="tel" inputmode="tel"><label>Monthly fee (₹) *</label><input id="studentFee" type="number" min="0" step="1"><div class="actions"><button onclick="saveStudent()">Save student</button><button class="secondary" onclick="toggleForm(false)">Cancel</button></div></div><div class="card"><div class="filter-row"><div><label>Filter by class</label><select id="studentClassFilter" onchange="render()"><option value="">All classes</option></select></div><div><label>Search student or class</label><input id="studentSearch" placeholder="Search by name or class" oninput="render()"></div></div><div id="studentList"></div></div></section>
+<section id="fees" class="panel hide"><h2>Monthly fees</h2><div class="card"><div class="filter-row"><div><label>Select month</label><input type="month" id="feeMonth" onchange="render()"></div><div><label>Filter by class</label><select id="feeClassFilter" onchange="render()"><option value="">All classes</option></select></div></div><p id="feeTotal" class="muted"></p><button onclick="showBulk('fees')">📲 Send all unpaid reminders</button><p class="tiny">Opens a review list; WhatsApp messages must be sent individually.</p><div id="feeList"></div></div></section>
+<section id="attendance" class="panel hide"><h2>Attendance</h2><div class="card"><div class="filter-row"><div><label>Select date</label><input type="date" id="attDate" onchange="render()"></div><div><label>Filter by class</label><select id="attClassFilter" onchange="render()"><option value="">All classes</option></select></div></div><button onclick="showBulk('attendance')">📲 Send all absent alerts</button><p class="tiny">Only students marked Absent for the selected date are included.</p><div id="attList"></div></div></section>
+<section id="settings" class="panel hide"><h2>Settings</h2><div class="card"><label>Tuition name</label><input id="tuitionName" maxlength="60"><label>WhatsApp fee reminder template</label><textarea id="reminderTemplate" rows="4"></textarea><p class="tiny">Use {student}, {month}, {fee}, {tuition}.</p><label>WhatsApp absent alert template</label><textarea id="absentTemplate" rows="4"></textarea><p class="tiny">Use {student}, {date}, {tuition}.</p><button onclick="saveSettings()">Save settings</button><hr style="border-color:var(--line);margin:22px 0"><h3>Tuition logo</h3><p class="tiny">Upload a square PNG/JPG logo. It will appear on your Home dashboard.</p><input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp"><button onclick="uploadLogo()">Upload logo</button><p id="logoStatus" class="tiny"></p><hr style="border-color:var(--line);margin:22px 0"><h3>Teacher profile</h3><label>Your full name</label><input id="teacherFullName" maxlength="100"><label>Mobile number</label><input id="teacherMobile" type="tel" maxlength="20"><label>Tuition name</label><input id="teacherTuitionName" maxlength="60"><button onclick="saveTeacherProfile()">Save teacher profile</button></div><p class="notice">Internet is required to access data. For safety, log out after use on shared devices and never share your password.</p></section>
+<section id="owner" class="panel hide"><h2>👑 Owner Panel</h2><div id="ownerManagement" class="card"><p class="muted">Approve, deny, revoke or remove teacher requests. Removing a request does not delete its Firebase Authentication account or student data.</p><div id="teacherList">Loading teacher accounts...</div></div></section>
+<nav class="nav" id="bottomNav"><button data-tab="dashboard" class="active" onclick="tab('dashboard')"><span class="icon">⌂</span>Home</button><button data-tab="students" onclick="tab('students')"><span class="icon">♙</span>Students</button><button data-tab="fees" onclick="tab('fees')"><span class="icon">₹</span>Fees</button><button data-tab="attendance" onclick="tab('attendance')"><span class="icon">✓</span>Attendance</button><button data-tab="settings" onclick="tab('settings')"><span class="icon">⚙</span>Settings</button><button id="adminBtn" data-tab="owner" onclick="tab('owner')"><span class="icon">♙</span><span id="profileNavLabel">Profile</span></button></nav>
+</div>
+<div id="queue" class="queue hide"><div class="row"><h3 id="queueTitle">WhatsApp messages</h3><button class="secondary" onclick="visible('queue',false)">Close ✕</button></div><p class="tiny">Review each message and tap Open WhatsApp. You must press Send yourself; opening the link does not send it.</p><div id="queueList"></div></div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
+<script>
+"use strict";
+const firebaseConfig={apiKey:"AIzaSyD1mXEjy41T7qcf5JmPV4XxRZDi6MAIyjY",authDomain:"smart-tution-e8d6a.firebaseapp.com",projectId:"smart-tution-e8d6a",storageBucket:"smart-tution-e8d6a.firebasestorage.app",messagingSenderId:"825744636173",appId:"1:825744636173:web:8806a8b36bd51de359d844"};
+const OWNER_UID="IOfHmpenS5gCHqf0e9WKqnJcUR13";
+const $=id=>document.getElementById(id);
+const template="Dear Parent, {student}'s tuition fee of ₹{fee} for {month} is pending. Please pay at your convenience. Thank you, {tuition}.";
+const defaultAbsentTemplate="Dear Parent, {student} was marked absent from {tuition} on {date}. Please contact us if needed. Thank you.";
+let auth,db,storage,user=null,profile=null,students=[],payments={},attendance={},settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,logoUrl:""},listeners=[],ownerUnsub=null;
+function visible(id,on){$(id).classList.toggle("hide",!on)}
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function err(e){alert(e?.message||String(e))}
+function clearListeners(){listeners.forEach(f=>f());listeners=[];if(ownerUnsub){ownerUnsub();ownerUnsub=null}}
+function screen(name){["setup","auth","waiting","workspace"].forEach(id=>visible(id,id===name));visible("logout",!!user);visible("queue",false);$("who").textContent=user?.email||"Your teaching, beautifully organized"}
+async function registerTeacher(){
+  const email=$("email").value.trim(),password=$("password").value;
+  if(!email||!password)return alert("Enter your email and password first.");
+  if(password.length<6)return alert("Password must be at least 6 characters.");
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,password);
+    await db.collection("users").doc(cred.user.uid).set({email:cred.user.email,status:"pending",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await refreshAccount();
+  }catch(e){
+    alert(e.code==="auth/email-already-in-use"?"This email already has an account. Please log in.":e.code==="auth/weak-password"?"Choose a stronger password.":"Could not submit the access request. Please check your connection or contact the owner.");
+  }
+}
+async function login(){const email=$("email").value.trim();const password=$("password").value;if(!email||!password)return alert("Enter your email and password.");try{await auth.signInWithEmailAndPassword(email,password)}catch(e){alert("Login failed. Check your email and password, or contact the app owner.")}}
+async function signOutUser(){try{await auth.signOut();students=[];payments={};attendance={};profile=null;settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,logoUrl:""};visible("queue",false)}catch(e){err(e)}}
+async function refreshAccount(){if(!user)return;try{const doc=await db.collection("users").doc(user.uid).get({source:"server"});if(!auth.currentUser||auth.currentUser.uid!==user.uid)return;profile=doc.exists?doc.data():null;$("teacherFullName").value=profile?.fullName||"";$("teacherMobile").value=profile?.mobile||"";$("teacherTuitionName").value=profile?.tuitionName||"";if(user.uid===OWNER_UID){profile={...(profile||{}),status:"approved"};startWorkspace()}else if(profile?.status==="approved"){startWorkspace()}else{clearListeners();screen("waiting");$("waitTitle").textContent=profile?.status==="revoked"?"Access revoked":profile?.status==="denied"?"Request denied":profile?"Awaiting approval":"No access request found";$("waitMessage").textContent=profile?.status==="revoked"?"The owner has removed your access.":profile?.status==="denied"?"The owner denied your request.":profile?"Your account is waiting for owner approval.":"Your account exists, but the owner has no pending request for it. Contact the owner."}}catch(e){clearListeners();screen("waiting");$("waitTitle").textContent="Connection needed";$("waitMessage").textContent="Connect to the internet to verify your account status."}}
+function startWorkspace(){clearListeners();screen("workspace");visible("adminBtn",user.uid===OWNER_UID);visible("ownerManagement",user.uid===OWNER_UID);tab("dashboard");const base=db.collection("teacherData").doc(user.uid);listeners.push(base.collection("students").onSnapshot(s=>{students=s.docs.map(d=>({id:d.id,...d.data()}));render()},err));listeners.push(base.collection("payments").onSnapshot(s=>{payments={};s.docs.forEach(d=>payments[d.id]=d.data().paid);render()},err));listeners.push(base.collection("attendance").onSnapshot(s=>{attendance={};s.docs.forEach(d=>attendance[d.id]=d.data().status);render()},err));listeners.push(base.onSnapshot(s=>{settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,...(s.data()||{})};$("tuitionName").value=settings.name;$("reminderTemplate").value=settings.template;$("absentTemplate").value=settings.absentTemplate||defaultAbsentTemplate;$("brand").textContent=settings.name;$("homeTuitionTitle").textContent=settings.name;setLogo(settings.logoUrl||"")},err));if(user.uid===OWNER_UID){ownerUnsub=db.collection("users").onSnapshot(s=>renderTeachers(s.docs),e=>{$("teacherList").textContent="Unable to load teacher requests: "+e.message})}}
+function tab(id){document.querySelectorAll(".panel").forEach(el=>visible(el.id,el.id===id));document.querySelectorAll(".nav button").forEach(el=>el.classList.toggle("active",el.dataset.tab===id));visible("queue",false);render()}
+function toggleForm(open){visible("studentForm",open);if(open){$("studentId").value="";$("formTitle").textContent="Add student";["studentName","studentClass","studentPhone","studentFee"].forEach(x=>$(x).value="");$("studentForm").scrollIntoView({behavior:"smooth",block:"nearest"})}}
+function editStudent(id){const s=students.find(x=>x.id===id);if(!s)return;visible("studentForm",true);$("formTitle").textContent="Edit student";$("studentId").value=id;$("studentName").value=s.name||"";$("studentClass").value=s.className||"";$("studentPhone").value=s.phone||"";$("studentFee").value=s.fee??0;$("studentForm").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function studentRef(id){return db.collection("teacherData").doc(user.uid).collection("students").doc(id)}
+async function saveStudent(){try{const name=$("studentName").value.trim(),className=$("studentClass").value.trim(),fee=Number($("studentFee").value);if(!name||!className||$("studentFee").value===""||!Number.isFinite(fee)||fee<0)throw Error("Enter a student name, class and valid fee");const id=$("studentId").value;const ref=id?studentRef(id):db.collection("teacherData").doc(user.uid).collection("students").doc();await ref.set({name,className,phone:$("studentPhone").value.trim(),fee});toggleForm(false)}catch(e){err(e)}}
+async function deleteStudent(id){if(!confirm("Delete this student? Old fee and attendance records may remain in the database."))return;try{await studentRef(id).delete()}catch(e){err(e)}}
+function month(){return $("feeMonth").value}function paidKey(id){return month()+"_"+id}
+async function togglePaid(id){try{await db.collection("teacherData").doc(user.uid).collection("payments").doc(paidKey(id)).set({paid:!payments[paidKey(id)]})}catch(e){err(e)}}
+async function mark(id,status){try{await db.collection("teacherData").doc(user.uid).collection("attendance").doc($("attDate").value+"_"+id).set({status})}catch(e){err(e)}}
+function phoneNumber(s){let n=(s.phone||"").replace(/\D/g,"");if(n.length===10)n="91"+n;return n.length>=11&&n.length<=15?n:null}
+function feeMessage(s){return(settings.template||template).replace(/\{student\}/g,s.name).replace(/\{month\}/g,month()).replace(/\{fee\}/g,s.fee).replace(/\{tuition\}/g,settings.name)}
+function absentMessage(s){return (settings.absentTemplate||defaultAbsentTemplate).replace(/\{student\}/g,s.name).replace(/\{date\}/g,$("attDate").value).replace(/\{tuition\}/g,settings.name||"Smart Tution")}
+function whatsAppLink(s,type){const n=phoneNumber(s);return n?"https://wa.me/"+n+"?text="+encodeURIComponent(type==="fees"?feeMessage(s):absentMessage(s)):null}
+function sendAlert(id,type){const s=students.find(x=>x.id===id);if(!s)return;const url=whatsAppLink(s,type);if(!url)return alert("Enter a valid parent WhatsApp number for "+s.name);window.open(url,"_blank","noopener,noreferrer")}
+function reminder(id){sendAlert(id,"fees")}
+function filteredFor(type){const selected=$(type==="fees"?"feeClassFilter":"attClassFilter").value;return sortStudents(students.filter(s=>!selected||classLabel(s)===selected))}
+function showBulk(type){const targets=filteredFor(type).filter(s=>type==="fees"?!payments[paidKey(s.id)]:attendance[$("attDate").value+"_"+s.id]==="Absent");$("queueTitle").textContent=type==="fees"?"Unpaid fee reminders":"Absent student alerts";$("queueList").innerHTML=targets.length?targets.map(s=>{const url=whatsAppLink(s,type);return `<div class="item"><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span><div class="muted">${url?"Ready to open in WhatsApp":"Parent phone missing or invalid"}</div>${url?`<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Open WhatsApp ↗</a>`:""}</div>`}).join(""):'<div class="empty">No matching students found.</div>';visible("queue",true);$("queue").scrollIntoView({behavior:"smooth",block:"start"})}
+async function saveSettings(){try{await db.collection("teacherData").doc(user.uid).set({name:$("tuitionName").value.trim()||"Smart Tution",template:$("reminderTemplate").value.trim()||template,absentTemplate:$("absentTemplate").value.trim()||defaultAbsentTemplate},{merge:true});alert("Settings saved")}catch(e){err(e)}}
+function setLogo(url){const img=$("homeLogo");if(url){img.src=url;visible("homeLogo",true)}else{img.removeAttribute("src");visible("homeLogo",false)}}
+async function uploadLogo(){const file=$("logoFile").files[0];if(!file)return alert("Please choose a logo image first.");if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>700000) return alert("Choose PNG, JPG or WEBP under 700 KB.");try{if(!storage)throw Error("Firebase Storage did not load.");$("logoStatus").textContent="Uploading...";const ref=storage.ref().child("teacherLogos/"+user.uid+"/logo_"+Date.now());await ref.put(file);const url=await ref.getDownloadURL();await db.collection("teacherData").doc(user.uid).set({logoUrl:url},{merge:true});$("logoStatus").textContent="Logo uploaded successfully.";setLogo(url)}catch(e){$("logoStatus").textContent="Upload failed: "+(e.message||e);err(e)}}
+async function saveTeacherProfile(){const data={fullName:$("teacherFullName").value.trim(),mobile:$("teacherMobile").value.trim(),tuitionName:$("teacherTuitionName").value.trim()};if(!data.fullName||!data.mobile||!data.tuitionName)return alert("Please fill all three profile fields.");try{await db.collection("users").doc(user.uid).set(data,{merge:true});alert("Teacher profile saved.")}catch(e){err(e)}}
+function sortStudents(arr){return [...arr].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),undefined,{numeric:true}))}
+function classLabel(s){return String(s.className||"Not specified").trim()||"Not specified"}
+function populateClassFilters(){const classes=[...new Set(students.map(classLabel))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));for(const id of ["feeClassFilter","attClassFilter","homeClassFilter","studentClassFilter"]){const el=$(id),old=el.value;el.innerHTML='<option value="">All classes</option>'+classes.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");el.value=classes.includes(old)?old:""}}
+function studentCard(s){return `<div class="item"><div class="row"><div><b>${escapeHTML(s.name)}</b> <span class="pill">${escapeHTML(classLabel(s))}</span><div class="muted">₹${Number(s.fee||0).toLocaleString("en-IN")}/month · ${payments[paidKey(s.id)]?"Paid":"Unpaid"}</div></div><div class="actions"><button class="secondary" onclick="editStudent('${s.id}')">Edit</button><button class="danger" onclick="deleteStudent('${s.id}')">Delete</button></div></div></div>`}
+function render(){if(!user||!profile||$("workspace").classList.contains("hide"))return;populateClassFilters();const homeClass=$("homeClassFilter").value,homeStudents=students.filter(s=>!homeClass||classLabel(s)===homeClass),total=homeStudents.length,paid=homeStudents.filter(s=>payments[paidKey(s.id)]),amount=paid.reduce((a,s)=>a+Number(s.fee||0),0),expected=homeStudents.reduce((a,s)=>a+Number(s.fee||0),0),percent=expected?Math.min(100,Math.round(amount/expected*100)):0;$("totalStudents").textContent=total;$("collectedFees").textContent="₹"+amount.toLocaleString("en-IN");$("feePercent").textContent=percent+"%";$("feeProgress").style.width=percent+"%";$("feeSummary").textContent="₹"+amount.toLocaleString("en-IN")+" collected of ₹"+expected.toLocaleString("en-IN")+" expected";$("dashboardMonth").textContent="Overview for "+(month()||"current month");const homeUnpaid=homeStudents.filter(s=>!payments[paidKey(s.id)]);$("homeClassTotal").textContent=homeStudents.length;$("homeClassPaid").textContent=paid.length;$("homeClassUnpaid").textContent=homeUnpaid.length;$("homeClassAmount").textContent="₹"+amount.toLocaleString("en-IN");const chartParts=[{label:"Collected",value:amount},{label:"Pending",value:Math.max(0,expected-amount)}],chartMax=Math.max(1,...chartParts.map(x=>x.value));$("homeFeeChart").innerHTML=chartParts.map(x=>`<div class="chart-row"><span>${x.label}</span><div class="chart-track"><div style="width:${Math.round(x.value/chartMax*100)}%"></div></div><b>₹${x.value.toLocaleString("en-IN")}</b></div>`).join("");$("count").textContent=total+" students";
+const sq=$("studentSearch").value.trim().toLowerCase(),selectedStudentClass=$("studentClassFilter").value,filtered=students.filter(s=>(!selectedStudentClass||classLabel(s)===selectedStudentClass)&&(String(s.name||"")+" "+classLabel(s)).toLowerCase().includes(sq)),groups=new Map();for(const s of filtered){const label=classLabel(s);if(!groups.has(label))groups.set(label,[]);groups.get(label).push(s)}const sortedGroups=[...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}));$("studentList").innerHTML=sortedGroups.map(([label,group])=>`<div class="class-section"><div class="row"><h3 class="class-heading">📘 ${/^class\b/i.test(label)?escapeHTML(label):"Class "+escapeHTML(label)}</h3><span class="muted">${group.length} student${group.length===1?"":"s"}</span></div>${sortStudents(group).map(studentCard).join("")}</div>`).join("")||'<div class="empty">No students found.</div>';
+const feeStudents=filteredFor("fees"),feePaid=feeStudents.filter(s=>payments[paidKey(s.id)]),feeAmount=feePaid.reduce((a,s)=>a+Number(s.fee||0),0),feeExpected=feeStudents.reduce((a,s)=>a+Number(s.fee||0),0);$("feeTotal").textContent=`${feeStudents.length} students · Collected ₹${feeAmount.toLocaleString("en-IN")} / ₹${feeExpected.toLocaleString("en-IN")}`;$("feeList").innerHTML=feeStudents.map(s=>`<div class="item"><div class="row"><div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span><div class="muted">₹${Number(s.fee||0).toLocaleString("en-IN")}</div></div><span class="pill ${payments[paidKey(s.id)]?"paid":""}">${payments[paidKey(s.id)]?"Paid":"Unpaid"}</span></div><div class="actions"><button class="secondary" onclick="togglePaid('${s.id}')">Mark ${payments[paidKey(s.id)]?"unpaid":"paid"}</button>${!payments[paidKey(s.id)]?`<button onclick="reminder('${s.id}')">WhatsApp reminder ↗</button>`:""}</div></div>`).join("")||'<div class="empty">No students in this class.</div>';
+$("attList").innerHTML=filteredFor("attendance").map(s=>{const k=$("attDate").value+"_"+s.id,status=attendance[k]||"Not marked";return `<div class="item"><div class="row"><div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span></div><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="actions"><button class="secondary" onclick="mark('${s.id}','Present')">Present</button><button class="secondary" onclick="mark('${s.id}','Absent')">Absent</button>${status==="Absent"?`<button onclick="sendAlert('${s.id}','attendance')">Send absent alert ↗</button>`:""}</div></div>`}).join("")||'<div class="empty">No students in this class.</div>'}
+function renderTeachers(docs){const teachers=docs.filter(d=>d.id!==OWNER_UID);$("teacherList").innerHTML=teachers.map(d=>{const u=d.data(),status=u.status||"pending";return `<div class="item"><div class="row"><b>${escapeHTML(u.email||d.id)}</b><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="tiny">Name: ${escapeHTML(u.fullName||"Not added")} · Mobile: ${escapeHTML(u.mobile||"Not added")} · Tuition: ${escapeHTML(u.tuitionName||"Not added")}</div><div class="actions" style="margin-top:9px"><button class="success" onclick="setAccess('${d.id}','approved')">Approve / Restore</button><button class="secondary" onclick="setAccess('${d.id}','denied')">Deny</button><button class="danger" onclick="setAccess('${d.id}','revoked')">Revoke</button><button class="danger" onclick="deleteRequest('${d.id}')">Delete request</button></div></div>`}).join("")||'<div class="empty">No teacher requests yet.</div>'}
+async function setAccess(uid,status){if(user?.uid!==OWNER_UID)return;if(!confirm((status==="approved"?"Approve":status==="denied"?"Deny":"Revoke")+" this teacher?"))return;try{await db.collection("users").doc(uid).update({status})}catch(e){err(e)}}
+async function deleteRequest(uid){if(user?.uid!==OWNER_UID)return;if(!confirm("Delete this teacher request from the list? This does NOT delete their Firebase Authentication account or saved data. They will lose approval access, but cannot request again with the same email unless their Auth account is separately removed."))return;try{await db.collection("users").doc(uid).delete()}catch(e){err(e)}}
+const now=new Date();$("feeMonth").value=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0");$("attDate").value=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+if(firebaseConfig.apiKey==="REPLACE_ME"||OWNER_UID==="REPLACE_WITH_OWNER_UID"||typeof firebase==="undefined"){screen("setup")}else{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();storage=firebase.storage();auth.onAuthStateChanged(u=>{clearListeners();user=u;profile=null;students=[];payments={};attendance={};if(u)refreshAccount();else{screen("auth");$("brand").textContent="Smart Tution"}})}
+</script>
+<script>
+/* Integrated Smart Tution feature add-on */
+/* Smart Tution Premium Dark – feature add-on
+   Paste this script immediately BEFORE </body> in the existing app.
+   It reuses the existing Firebase auth/db, teacherData/{uid} paths,
+   students, payments and attendance records. */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const style = document.createElement('style');
+  style.textContent = `
+    .nav{overflow-x:auto;justify-content:flex-start}.nav button{flex:0 0 76px}.feature-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:14px}
+    .feature-day{min-height:66px;border:1px solid var(--line);border-radius:10px;background:#101a30;padding:6px 3px;text-align:center;color:var(--ink);font-size:12px;cursor:pointer}
+    .feature-day small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+    .feature-day.today{border-color:var(--violet)}.feature-day.has-record{background:#20264a}
+    .feature-day.empty-day{visibility:hidden}.feature-kpi{background:#101a30;border:1px solid var(--line);border-radius:13px;padding:12px}
+    .feature-kpi span{display:block;color:var(--muted);font-size:11px}.feature-kpi b{display:block;font-size:20px;margin-top:5px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .feature-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+    .feature-actions button{padding:9px 11px}
+    .feature-note{font-size:12px;color:var(--muted);line-height:1.5}
+    @media(max-width:420px){.feature-day{min-height:57px;font-size:11px}.feature-day small{font-size:9px}}
+    @media(min-width:720px){.feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  `;
+  document.head.appendChild(style);
+
+  function addNav(id, icon, label) {
+    const nav = $('bottomNav');
+    if (!nav || nav.querySelector(`[data-tab="${id}"]`)) return;
+    const b = document.createElement('button');
+    b.dataset.tab = id;
+    b.innerHTML = `<span class="icon">${icon}</span>${label}`;
+    b.addEventListener('click', () => tab(id));
+    nav.appendChild(b);
+  }
+  function addPanel(id, html) {
+    const ws = $('workspace');
+    if (!ws || $(id)) return;
+    const section = document.createElement('section');
+    section.id = id; section.className = 'panel hide'; section.innerHTML = html;
+    const nav = $('bottomNav');
+    ws.insertBefore(section, nav || null);
+  }
+
+  addNav('calendar','▦','Calendar');
+  addNav('reports','▤','Reports');
+  addNav('exams','✎','Exams');
+  addPanel('calendar', `
+    <h2>Attendance Calendar</h2><p class="section-label">Daily attendance history from your existing attendance records.</p>
+    <div class="card"><div class="filter-row"><div><label>Month</label><input id="calendarMonth" type="month"></div><div><label>Class</label><select id="calendarClass"><option value="">All classes</option></select></div></div>
+    <div class="row"><span class="tiny">Tap a date to open its attendance list.</span><span class="pill paid">Present</span><span class="pill revoked">Absent</span></div>
+    <div class="feature-calendar" id="calendarGrid"></div><div id="calendarSummary" class="muted" style="margin-top:12px"></div></div>`);
+  addPanel('reports', `
+    <h2>Monthly Reports</h2><p class="section-label">Fee and attendance summary calculated from your existing records.</p>
+    <div class="card"><label>Report month</label><input id="reportMonth" type="month">
+    <div class="feature-grid" style="margin-top:12px">
+      <div class="feature-kpi"><span>Total students</span><b id="repStudents">0</b></div><div class="feature-kpi"><span>Expected fees</span><b id="repExpected">₹0</b></div>
+      <div class="feature-kpi"><span>Collected fees</span><b id="repCollected">₹0</b></div><div class="feature-kpi"><span>Pending fees</span><b id="repPending">₹0</b></div>
+      <div class="feature-kpi"><span>Present marks</span><b id="repPresent">0</b></div><div class="feature-kpi"><span>Absent marks</span><b id="repAbsent">0</b></div>
+      <div class="feature-kpi"><span>Attendance entries</span><b id="repMarked">0</b></div><div class="feature-kpi"><span>Collection rate</span><b id="repRate">0%</b></div>
+    </div><div class="bar" style="margin-top:16px"><div id="repProgress"></div></div>
+    <p class="feature-note">Fee totals use the paid/unpaid status saved for the selected month. Attendance totals count saved daily marks, not unique students.</p>
+    <button class="secondary" onclick="window.print()">Print / Save report as PDF</button></div>`);
+  addPanel('exams', `
+    <h2>Exams & Results</h2><p class="section-label">Create exam records and track each student's marks.</p>
+    <div class="card"><h3 id="examFormTitle">Add exam result</h3><input id="examEditId" type="hidden">
+      <label>Student *</label><select id="examStudent"><option value="">Select student</option></select>
+      <label>Exam name *</label><input id="examName" maxlength="80" placeholder="e.g. Unit Test 1">
+      <div class="filter-row"><div><label>Exam date</label><input id="examDate" type="date"></div><div><label>Total marks *</label><input id="examTotal" type="number" min="1" step="0.5"></div></div>
+      <label>Obtained marks *</label><input id="examObtained" type="number" min="0" step="0.5">
+      <div class="feature-actions"><button onclick="saveExamResult()">Save result</button><button class="secondary" onclick="resetExamForm()">Clear</button></div>
+    </div><div class="card"><div class="filter-row"><div><label>Filter by student</label><select id="examFilterStudent" onchange="renderExamResults()"><option value="">All students</option></select></div><div><label>Search exam</label><input id="examSearch" oninput="renderExamResults()" placeholder="Exam name"></div></div><div id="examResultsList"></div></div>`);
+
+  // Add optional profile fields to the existing student form and preserve them on edit/save.
+  const form = $('studentForm');
+  if (form && !$('studentParentName')) {
+    const extra = document.createElement('div');
+    extra.id = 'studentExtraFields';
+    extra.innerHTML = `<hr style="border-color:var(--line);margin:18px 0"><h3>Student profile details</h3>
+      <label>Parent / Guardian name</label><input id="studentParentName" maxlength="100" placeholder="Parent name">
+      <label>Address</label><textarea id="studentAddress" rows="2" maxlength="300" placeholder="Student address"></textarea>
+      <label>Date of birth</label><input id="studentDob" type="date">
+      <label>Additional notes</label><textarea id="studentNotes" rows="2" maxlength="500" placeholder="Any useful student information"></textarea>`;
+    const actions = form.querySelector('.actions');
+    form.insertBefore(extra, actions || null);
+  }
+
+  // Dedicated profile browser; the existing student documents are extended in place.
+  addPanel('profiles', `<h2>Student Profiles</h2><p class="section-label">View and update each student's details.</p>
+    <div class="card"><label>Select student</label><select id="profileStudent" onchange="renderStudentProfile()"><option value="">Select student</option></select><div id="profileDetails" class="muted">Choose a student to view their profile.</div></div>`);
+  addNav('profiles','♙','Profiles');
+
+  const originalTab = window.tab;
+  window.tab = function (id) {
+    if (typeof originalTab === 'function') originalTab(id);
+    if (['calendar','reports','exams','profiles'].includes(id)) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.toggle('hide', p.id !== id));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+      if (id === 'calendar') renderAttendanceCalendar();
+      if (id === 'reports') renderMonthlyReport();
+      if (id === 'exams') { populateExamStudents(); renderExamResults(); }
+      if (id === 'profiles') { populateProfileStudents(); renderStudentProfile(); }
+    }
+  };
+
+  const originalEditStudent = window.editStudent;
+  window.editStudent = function (id) {
+    if (typeof originalEditStudent === 'function') originalEditStudent(id);
+    const s = (students || []).find(x => x.id === id);
+    if (s) {
+      if ($('studentParentName')) $('studentParentName').value = s.parentName || '';
+      if ($('studentAddress')) $('studentAddress').value = s.address || '';
+      if ($('studentDob')) $('studentDob').value = s.dob || '';
+      if ($('studentNotes')) $('studentNotes').value = s.notes || '';
+    }
+  };
+  const originalToggleForm = window.toggleForm;
+  window.toggleForm = function (open) {
+    if (typeof originalToggleForm === 'function') originalToggleForm(open);
+    if (open) ['studentParentName','studentAddress','studentDob','studentNotes'].forEach(id => { if ($(id)) $(id).value = ''; });
+  };
+  window.saveStudent = async function () {
+    try {
+      const name = $('studentName').value.trim(), className = $('studentClass').value.trim(), fee = Number($('studentFee').value);
+      if (!name || !className || $('studentFee').value === '' || !Number.isFinite(fee) || fee < 0) throw Error('Enter a student name, class and valid fee');
+      const id = $('studentId').value;
+      const ref = id ? studentRef(id) : db.collection('teacherData').doc(user.uid).collection('students').doc();
+      const extra = { parentName: $('studentParentName')?.value.trim() || '', address: $('studentAddress')?.value.trim() || '', dob: $('studentDob')?.value || '', notes: $('studentNotes')?.value.trim() || '' };
+      await ref.set({ name, className, phone: $('studentPhone').value.trim(), fee, ...extra }, { merge: true });
+      toggleForm(false);
+    } catch (e) { err(e); }
+  };
+
+  function currentMonthValue() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; }
+  function safeText(v) { return escapeHTML(v == null ? '' : v); }
+  function inMonth(date, ym) { return typeof date === 'string' && date.slice(0,7) === ym; }
+  function money(n) { return '₹' + Number(n || 0).toLocaleString('en-IN'); }
+  function getAttendanceForDate(date, className) {
+    const arr = (students || []).filter(s => !className || classLabel(s) === className);
+    return { present: arr.filter(s => attendance[date+'_'+s.id] === 'Present').length,
+      absent: arr.filter(s => attendance[date+'_'+s.id] === 'Absent').length };
+  }
+  function refreshCalendarClass() {
+    const el = $('calendarClass'); if (!el) return;
+    const old = el.value, classes = [...new Set((students||[]).map(classLabel))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+    el.innerHTML = '<option value="">All classes</option>' + classes.map(c=>`<option value="${safeText(c)}">${safeText(c)}</option>`).join('');
+    if (classes.includes(old)) el.value = old;
+  }
+  window.renderAttendanceCalendar = function () {
+    if (!$('calendarGrid')) return;
+    const ym = $('calendarMonth').value || currentMonthValue(); $('calendarMonth').value = ym;
+    refreshCalendarClass();
+    const [y,m] = ym.split('-').map(Number), first = new Date(y,m-1,1), days = new Date(y,m,0).getDate(), offset = (first.getDay()+6)%7, cls = $('calendarClass').value;
+    const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    let html = labels.map(x=>`<div class="tiny" style="text-align:center">${x}</div>`).join('');
+    for(let i=0;i<offset;i++) html += '<div class="feature-day empty-day"></div>';
+    let markedDays=0, present=0, absent=0;
+    for(let day=1;day<=days;day++) {
+      const date = `${ym}-${String(day).padStart(2,'0')}`, stats = getAttendanceForDate(date,cls), marked=stats.present+stats.absent;
+      if(marked){markedDays++;present+=stats.present;absent+=stats.absent;}
+      const today = new Date().toISOString().slice(0,10)===date;
+      html += `<button type="button" class="feature-day ${marked?'has-record':''} ${today?'today':''}" onclick="openCalendarDate('${date}')"><b>${day}</b><small>${marked?`${stats.present}P · ${stats.absent}A`:'—'}</small></button>`;
+    }
+    $('calendarGrid').innerHTML = html;
+    $('calendarSummary').textContent = `${markedDays} days with attendance · ${present} present marks · ${absent} absent marks`;
+  };
+  window.openCalendarDate = function(date) { $('attDate').value=date; tab('attendance'); };
+  $('calendarMonth').addEventListener('change', renderAttendanceCalendar);
+  $('calendarClass').addEventListener('change', renderAttendanceCalendar);
+
+  window.renderMonthlyReport = function () {
+    if (!$('reportMonth')) return;
+    const ym = $('reportMonth').value || currentMonthValue(); $('reportMonth').value = ym;
+    const ss = students || [], paid = ss.filter(s => payments[ym+'_'+s.id]), expected = ss.reduce((a,s)=>a+Number(s.fee||0),0), collected=paid.reduce((a,s)=>a+Number(s.fee||0),0);
+    let present=0, absent=0, marked=0;
+    Object.entries(attendance||{}).forEach(([key,status])=>{const date=key.slice(0,10);if(inMonth(date,ym)){if(status==='Present')present++;if(status==='Absent')absent++;if(status==='Present'||status==='Absent')marked++;}});
+    $('repStudents').textContent=ss.length; $('repExpected').textContent=money(expected); $('repCollected').textContent=money(collected); $('repPending').textContent=money(Math.max(0,expected-collected));
+    $('repPresent').textContent=present; $('repAbsent').textContent=absent; $('repMarked').textContent=marked;
+    const rate=expected?Math.round(collected/expected*100):0; $('repRate').textContent=rate+'%'; $('repProgress').style.width=Math.min(100,rate)+'%';
+  };
+  $('reportMonth').addEventListener('change', renderMonthlyReport);
+
+  // Fee receipt: print-ready page. The browser's print dialog can save it as PDF.
+  window.printFeeReceipt = function (studentId) {
+    const s=(students||[]).find(x=>x.id===studentId); if(!s) return;
+    const ym=$('feeMonth').value || currentMonthValue();
+    if(!payments[ym+'_'+studentId]) return alert('Mark this fee as paid before creating a receipt.');
+    const receiptNo = `ST-${ym.replace('-','')}-${String(studentId).slice(-6).toUpperCase()}`;
+    const w=window.open('','_blank'); if(!w) return alert('Please allow pop-ups to print the receipt.');
+    const tuition=settings.name||'Smart Tution', date=new Date().toLocaleDateString('en-IN');
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Fee Receipt ${receiptNo}</title><style>body{font:15px Arial,sans-serif;color:#17213a;padding:28px}.receipt{max-width:650px;margin:auto;border:2px solid #667cff;border-radius:16px;padding:28px}.top{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #ddd;padding-bottom:16px}h1{margin:0 0 5px;font-size:25px}.muted{color:#667085;font-size:13px}.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}.total{font-size:21px;font-weight:bold;color:#253eaa}.foot{margin-top:35px;display:flex;justify-content:space-between}@media print{button{display:none}body{padding:0}.receipt{border:1px solid #777}}</style></head><body><div class="receipt"><div class="top"><div><h1>${safeText(tuition)}</h1><div class="muted">OFFICIAL FEE RECEIPT</div></div><div><b>${safeText(receiptNo)}</b><div class="muted">Receipt generated: ${safeText(date)}</div></div></div><div class="row"><span>Student name</span><b>${safeText(s.name)}</b></div><div class="row"><span>Class</span><b>${safeText(s.className)}</b></div><div class="row"><span>Fee month</span><b>${safeText(ym)}</b></div><div class="row"><span>Payment status</span><b>PAID</b></div><div class="row total"><span>Amount received</span><span>${money(s.fee)}</span></div><p class="muted">Receipt generated on the date shown. Original payment date is not available in the existing payment records.</p><div class="foot"><span class="muted">Thank you for your payment.</span><span>Authorized signature __________</span></div></div><script>window.onload=()=>window.print()<\/script></body></html>`);
+    w.document.close();
+  };
+  // Add receipt actions in a separate block so the existing fee list markup is untouched.
+  const feesPanel=$('fees');
+  if(feesPanel && !$('receiptActions')) {
+    const card=document.createElement('div'); card.className='card'; card.innerHTML='<h3>PDF Fee Receipts</h3><p class="feature-note">Receipts are available for students marked Paid in the selected fee month. Choose Print / Save as PDF in the print dialog.</p><div id="receiptActions"></div>';
+    feesPanel.appendChild(card);
+  }
+  function renderReceipts() {
+    if(!$('receiptActions')) return;
+    const ym=$('feeMonth').value||currentMonthValue();
+    const paidStudents=(students||[]).filter(s=>payments[ym+'_'+s.id]);
+    $('receiptActions').innerHTML=paidStudents.map(s=>`<div class="item"><div class="row"><div><b>${safeText(s.name)}</b><div class="muted">${safeText(classLabel(s))} · ${money(s.fee)}</div></div><button onclick="printFeeReceipt('${safeText(s.id)}')">Create PDF receipt</button></div></div>`).join('')||'<div class="empty">No paid fee records for this month.</div>';
+  }
+
+  // Exams are stored separately under the currently signed-in teacher.
+  let examRecords=[], examUnsub=null;
+  function examCollection(){return db.collection('teacherData').doc(user.uid).collection('exams');}
+  function subscribeExams(){if(!user||!db)return;if(examUnsub)examUnsub();examUnsub=examCollection().onSnapshot(s=>{examRecords=s.docs.map(d=>({id:d.id,...d.data()}));renderExamResults();},e=>console.error('Exam records:',e));}
+  window.populateExamStudents = function(){
+    const opts=(students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(s=>`<option value="${safeText(s.id)}">${safeText(s.name)} — ${safeText(classLabel(s))}</option>`).join('');
+    ['examStudent','examFilterStudent'].forEach(id=>{const el=$(id);if(!el)return;const old=el.value;el.innerHTML=(id==='examStudent'?'<option value="">Select student</option>':'<option value="">All students</option>')+opts;if([...el.options].some(o=>o.value===old))el.value=old;});
+  };
+  window.resetExamForm = function(){['examEditId','examName','examTotal','examObtained'].forEach(id=>$(id).value='');$('examStudent').value='';$('examDate').value=new Date().toISOString().slice(0,10);$('examFormTitle').textContent='Add exam result';};
+  window.saveExamResult = async function(){
+    try{
+      if(!user||!profile||profile.status!=='approved'&&user.uid!==OWNER_UID)throw Error('Approved teacher access is required.');
+      const studentId=$('examStudent').value, s=(students||[]).find(x=>x.id===studentId), name=$('examName').value.trim(), date=$('examDate').value;
+      const total=Number($('examTotal').value), obtained=Number($('examObtained').value);
+      if(!s||!name||!date||$('examTotal').value===''||$('examObtained').value===''||!Number.isFinite(total)||total<=0||!Number.isFinite(obtained)||obtained<0||obtained>total)throw Error('Select a student and enter valid exam details. Obtained marks cannot exceed total marks.');
+      const id=$('examEditId').value, ref=id?examCollection().doc(id):examCollection().doc();
+      await ref.set({studentId,studentName:s.name,className:s.className||'',examName:name,examDate:date,totalMarks:total,obtainedMarks:obtained,percentage:Number((obtained/total*100).toFixed(2)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),...(id?{}:{createdAt:firebase.firestore.FieldValue.serverTimestamp()})},{merge:true});
+      resetExamForm();
+    }catch(e){err(e);}
+  };
+  window.editExamResult = function(id){const r=examRecords.find(x=>x.id===id);if(!r)return;populateExamStudents();$('examEditId').value=id;$('examStudent').value=r.studentId;$('examName').value=r.examName||'';$('examDate').value=r.examDate||'';$('examTotal').value=r.totalMarks;$('examObtained').value=r.obtainedMarks;$('examFormTitle').textContent='Edit exam result';$('exams').scrollIntoView({behavior:'smooth'});};
+  window.deleteExamResult = async function(id){if(!confirm('Delete this exam result?'))return;try{await examCollection().doc(id).delete();}catch(e){err(e);}};
+  window.renderExamResults = function(){
+    if(!$('examResultsList'))return;populateExamStudents();const sid=$('examFilterStudent').value,q=$('examSearch').value.trim().toLowerCase();
+    const rows=examRecords.filter(r=>(!sid||r.studentId===sid)&&(`${r.examName||''} ${r.studentName||''} ${r.className||''}`).toLowerCase().includes(q)).sort((a,b)=>String(b.examDate||'').localeCompare(String(a.examDate||'')));
+    $('examResultsList').innerHTML=rows.map(r=>`<div class="item"><div class="row"><div><b>${safeText(r.studentName)}</b> <span class="pill">${safeText(r.className)}</span><div class="muted">${safeText(r.examName)} · ${safeText(r.examDate)}</div><div class="accent">${safeText(r.obtainedMarks)} / ${safeText(r.totalMarks)} · ${safeText(r.percentage)}%</div></div><div class="feature-actions"><button class="secondary" onclick="editExamResult('${safeText(r.id)}')">Edit</button><button class="danger" onclick="deleteExamResult('${safeText(r.id)}')">Delete</button></div></div></div>`).join('')||'<div class="empty">No exam results yet.</div>';
+  };
+  $('examDate').value=new Date().toISOString().slice(0,10);
+  $('examSearch').addEventListener('input',renderExamResults);
+
+  window.populateProfileStudents=function(){const el=$('profileStudent');if(!el)return;const old=el.value;el.innerHTML='<option value="">Select student</option>'+(students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(s=>`<option value="${safeText(s.id)}">${safeText(s.name)} — ${safeText(classLabel(s))}</option>`).join('');if([...el.options].some(o=>o.value===old))el.value=old;};
+  window.renderStudentProfile=function(){
+    const id=$('profileStudent').value,s=(students||[]).find(x=>x.id===id);if(!s){$('profileDetails').textContent='Choose a student to view their profile.';return;}
+    const paid=payments[month()+'_'+s.id], present=Object.entries(attendance||{}).filter(([k,v])=>k.endsWith('_'+s.id)&&v==='Present').length, absent=Object.entries(attendance||{}).filter(([k,v])=>k.endsWith('_'+s.id)&&v==='Absent').length;
+    $('profileDetails').innerHTML=`<div class="item"><b>${safeText(s.name)}</b> <span class="pill">${safeText(classLabel(s))}</span></div><div class="item">Parent / Guardian: <b>${safeText(s.parentName||'Not added')}</b></div><div class="item">WhatsApp: <b>${safeText(s.phone||'Not added')}</b></div><div class="item">Address: <b>${safeText(s.address||'Not added')}</b></div><div class="item">Date of birth: <b>${safeText(s.dob||'Not added')}</b></div><div class="item">Monthly fee: <b>${money(s.fee)}</b> · Current month: <span class="pill ${paid?'paid':''}">${paid?'Paid':'Unpaid'}</span></div><div class="item">Attendance records: <b>${present} present · ${absent} absent</b></div><div class="item">Notes: ${safeText(s.notes||'None')}</div><div class="feature-actions"><button onclick="tab('students');editStudent('${safeText(s.id)}')">Edit profile</button><button class="secondary" onclick="printFeeReceipt('${safeText(s.id)}')">Fee receipt</button></div>`;
+  };
+
+  // Extend the existing render without replacing its original dashboard/student/fee logic.
+  const oldRender=window.render;
+  window.render=function(){if(typeof oldRender==='function')oldRender();renderReceipts();if(!$('calendar').classList.contains('hide'))renderAttendanceCalendar();if(!$('reports').classList.contains('hide'))renderMonthlyReport();if(!$('exams').classList.contains('hide')){populateExamStudents();renderExamResults();}if(!$('profiles').classList.contains('hide')){populateProfileStudents();renderStudentProfile();}};
+  const oldStartWorkspace=window.startWorkspace;
+  window.startWorkspace=function(){if(typeof oldStartWorkspace==='function')oldStartWorkspace();subscribeExams();};
+  const oldClearListeners=window.clearListeners;
+  window.clearListeners=function(){if(examUnsub){examUnsub();examUnsub=null;}if(typeof oldClearListeners==='function')oldClearListeners();};
+  // Calendar/report month selectors and receipt list follow the existing fee month.
+  if($('calendarMonth'))$('calendarMonth').value=currentMonthValue();
+  if($('reportMonth'))$('reportMonth').value=currentMonthValue();
+})();
+
+</script>
+
+<script>
+// Enable installation as a Progressive Web App (PWA).
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch((error) => {
+      console.warn("Smart Tution service worker registration failed:", error);
+    });
+  });
+}
+</script>
+</body></html>
