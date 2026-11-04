@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090d1c">
+<meta name="description" content="Smart Tution - Premium teacher workspace for students, fees and attendance.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Smart Tution">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png"><title>Smart Tution | Premium Dark</title>
+<style>
+:root{color-scheme:dark;--bg:#090d1c;--surface:#121a30;--surface2:#19233d;--ink:#f3f5ff;--muted:#9caac9;--line:#2b3552;--blue:#667cff;--violet:#9874ff;--green:#4ad7aa;--red:#ff718e}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 100% 0%,#222453 0,transparent 40%),var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Arial,sans-serif;padding-bottom:105px;min-height:100vh}header{background:linear-gradient(115deg,#11182e,#242251 68%,#342264);padding:26px 18px 33px;border-radius:0 0 26px 26px;border-bottom:1px solid #41406b}header .inner{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}header h1{font-size:clamp(21px,4vw,29px);margin:6px 0;letter-spacing:-.6px}header small{color:#c0c9ee;font-size:11px;letter-spacing:1.5px}header #who{letter-spacing:0;font-size:12px;overflow-wrap:anywhere}main{max-width:1000px;margin:auto;padding:12px 15px 35px}.card{background:linear-gradient(150deg,#17213a,#11192d);padding:19px;border-radius:19px;margin:15px 0;border:1px solid #2c3654;box-shadow:0 10px 26px #03061045}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid .card{margin:0}.stat{position:relative;overflow:hidden}.stat:before{content:"";position:absolute;right:-25px;top:-30px;width:85px;height:85px;border-radius:50%;background:#6c63ff18}.stat span{color:var(--muted);font-size:12px}.stat strong{display:block;font-size:clamp(21px,4vw,29px);margin-top:8px;overflow-wrap:anywhere}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.muted{color:var(--muted);font-size:13px}.hide{display:none!important}h2{font-size:23px;margin:17px 0 7px;letter-spacing:-.5px}h3{font-size:17px;margin:0 0 10px}button{border:1px solid #8a87ff33;background:linear-gradient(120deg,#5c6cf6,#855bf0);color:#fff;border-radius:12px;padding:11px 14px;font:650 13px system-ui;cursor:pointer;transition:transform .15s,filter .15s}button:hover{filter:brightness(1.12)}button:active{transform:scale(.97)}button.secondary{background:#263353;color:#c9d6ff;border-color:#384c7c}button.danger{background:#44243c;color:#ff9fb3;border-color:#703b58}button.success{background:#1c463f;color:#7ff3c9;border-color:#2c6759}button:disabled{opacity:.5;cursor:not-allowed}input,textarea,select{display:block;width:100%;padding:12px 13px;border:1px solid #3a4767;border-radius:11px;font:inherit;margin:7px 0 14px;background:#0d1528;color:var(--ink);outline:none}input:focus,textarea:focus,select:focus{border-color:#8d83ff;box-shadow:0 0 0 3px #7e6bff20}input::placeholder{color:#7181a6}label{font-size:13px;font-weight:650;color:#cbd6f2}.actions{display:flex;flex-wrap:wrap;gap:7px}.actions button{margin:0}.item{border-bottom:1px solid var(--line);padding:15px 0}.item:last-child{border-bottom:0}.pill{display:inline-block;border-radius:30px;padding:5px 10px;font-size:11px;font-weight:750;background:#453821;color:#f3c681}.pill.paid,.pill.approved,.pill.Present{background:#173d36;color:#6be9bc}.pill.revoked,.pill.denied,.pill.Absent{background:#49263c;color:#ff9bb2}.class-section{border:1px solid var(--line);border-radius:15px;padding:14px;margin:15px 0;background:#111a2e}.class-heading{margin:0 0 4px;color:#b3b7ff;font-size:16px}.bar{height:12px;background:#2b3350;border-radius:20px;overflow:hidden}.bar>div{height:100%;width:0;background:linear-gradient(90deg,#665ef6,#46d4c2);transition:width .25s}.nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:#12192cf5;backdrop-filter:blur(18px);display:flex;justify-content:space-around;gap:2px;padding:8px 5px max(10px,env(safe-area-inset-bottom));border-top:1px solid #3a3b69;box-shadow:0 -7px 25px #02041066}.nav button{flex:1;min-width:0;margin:0;padding:9px 1px;background:transparent;border:0;color:#8794b5;font-size:10px;line-height:1.5;border-radius:10px}.nav button.active{background:linear-gradient(135deg,#313668,#40356c);color:#e7e4ff}.nav button .icon{display:block;font-size:19px}.notice{background:#302b23;color:#f0d6a7;padding:14px;border:1px solid #564732;border-radius:12px;font-size:13px;line-height:1.5}.empty{text-align:center;color:var(--muted);padding:25px 5px}.auth-card{max-width:480px;margin:28px auto}.section-label{color:var(--muted);font-size:13px;margin:6px 0 18px}.tiny{font-size:12px;color:var(--muted)}.accent{color:#afa6ff}.filter-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.filter-row input,.filter-row select{margin-bottom:7px}.queue{border:1px solid #56508a;background:#1b1b38;border-radius:15px;padding:15px;margin:12px 0}.queue a{display:inline-block;background:#294f43;color:#9af3cb;padding:9px 13px;text-decoration:none;border-radius:10px;margin:5px 0}.queue .item{overflow-wrap:anywhere}.badge{font-size:12px;color:#a4a9ed}.hero-tag{display:inline-block;background:#ffffff12;border:1px solid #ffffff20;border-radius:30px;padding:6px 11px;font-size:11px;letter-spacing:.5px}.tuition-logo{width:76px;height:76px;object-fit:contain;border-radius:16px;background:#fff;padding:5px;border:1px solid #55518b}.brand-line{display:flex;align-items:center;gap:10px}.brand-line h1{margin:6px 0}.header-logo{width:48px;height:48px;border-radius:12px;flex:0 0 auto}.chart-bars{display:grid;gap:12px;margin-top:12px}.chart-row{display:grid;grid-template-columns:75px 1fr auto;align-items:center;gap:9px;font-size:12px;color:var(--muted)}.chart-track{height:13px;border-radius:20px;background:#2b3350;overflow:hidden}.chart-track>div{height:100%;border-radius:20px;background:linear-gradient(90deg,#667cff,#b17aff)}@media(min-width:720px){.grid{grid-template-columns:repeat(4,1fr)}.nav{max-width:1000px;margin:auto;border-radius:16px 16px 0 0}.nav button{font-size:12px}}
+header .brand-line h1{margin:6px 0}.dashboard-brand{justify-content:flex-start!important;gap:14px}.dashboard-brand .tuition-logo{width:76px;height:76px;flex:0 0 76px}.dashboard-brand-copy{min-width:0}.dashboard-brand-copy h3{margin:0 0 6px;font-size:20px;overflow-wrap:anywhere}.dashboard-brand-copy p{margin:0;line-height:1.45;overflow-wrap:anywhere}.student-avatar{width:48px;height:48px;flex:0 0 48px;border-radius:50%;object-fit:cover;background:#263353;border:1px solid #59658a}.student-avatar-fallback{display:flex;align-items:center;justify-content:center;color:#dce3ff;font-weight:800;font-size:16px}</style><style id="smart-tution-sidebar-layout">
+#menuButton{order:-1;flex:0 0 auto;margin-right:12px;background:#fff;color:#315de8;border:1px solid #dfe5f4;border-radius:12px;box-shadow:0 4px 12px #344b8510;font-size:23px;line-height:1;padding:10px 13px;cursor:pointer}
+header .inner{display:flex;align-items:center;gap:10px}
+#sideNavOverlay{position:fixed;inset:0;z-index:9998;background:rgba(16,28,55,.34);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}
+#sideNavOverlay.open{opacity:1;visibility:visible}
+#sideNavDrawer{position:absolute;left:0;top:0;bottom:0;width:min(292px,84vw);background:#fff;box-shadow:12px 0 36px rgba(25,42,82,.16);display:flex;flex-direction:column;padding:18px 14px max(18px,env(safe-area-inset-bottom));transform:translateX(-102%);transition:transform .24s ease;overflow-y:auto}
+#sideNavOverlay.open #sideNavDrawer{transform:translateX(0)}
+.sideNavHead{display:flex;align-items:center;justify-content:space-between;padding:8px 5px 20px;border-bottom:1px solid #edf0f7}
+.sideNavBrand{display:flex;align-items:center;gap:11px;color:#17284b}
+.sideNavMark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#315de8,#8a6bea);display:grid;place-items:center;color:#fff;font-size:23px}
+.sideNavBrand strong{display:block;font-size:17px}.sideNavBrand small{display:block;color:#7b879c;font-size:11px;margin-top:3px}
+#sideNavClose{border:0;background:#f1f4fb;color:#53627e;border-radius:10px;width:35px;height:35px;font-size:24px}
+.sideNavLinks{display:flex;flex-direction:column;gap:5px;padding:18px 0;flex:1}
+.sideNavLinks button,.sideNavFoot button{width:100%;display:flex;align-items:center;gap:15px;text-align:left;padding:13px 14px;border:0;border-radius:11px;background:transparent;color:#33415e;font-size:15px;font-weight:600;box-shadow:none}
+.sideNavLinks button:first-child{background:#edf2ff;color:#2858d9}
+.sideNavLinks button:active,.sideNavLinks button:hover{background:#edf2ff;color:#2858d9}
+.sideNavLinks button span,.sideNavFoot button span{font-size:14px}
+.sideNavFoot{border-top:1px solid #edf0f7;padding-top:12px}.sideNavFoot .sideNavLogout{color:#b43e5a}
+body.sideNavOpen{overflow:hidden}
+@media(min-width:720px){#sideNavDrawer{width:300px}}
+</style>
+
+<style id="sidebar-dashboard-theme-colors">
+#menuButton{background:linear-gradient(120deg,#315de8,#8759e9)!important;color:#fff!important;border:1px solid #315de8!important;box-shadow:0 5px 14px #315de833!important}
+#menuButton:active{filter:brightness(.95)}
+.sideNavMark{background:linear-gradient(135deg,#315de8,#8759e9)!important}
+.sideNavLinks button,.sideNavFoot button{color:#3154b5!important}
+.sideNavLinks button:first-child{background:linear-gradient(120deg,#edf1ff,#f2edff)!important;color:#315de8!important}
+.sideNavLinks button:active,.sideNavLinks button:hover,.sideNavFoot button:not(.sideNavLogout):hover{background:linear-gradient(120deg,#edf1ff,#f2edff)!important;color:#315de8!important}
+#sideNavClose{background:#edf1ff!important;color:#315de8!important;border:1px solid #dce4ff!important}
+.sideNavHead{border-bottom-color:#e0e6f7!important}.sideNavFoot{border-top-color:#e0e6f7!important}
+</style>
+
+<style id="sidebar-final-contrast-and-header-alignment">
+/* Keep sidebar labels readable against the blue-violet dashboard theme */
+.sideNavLinks button,.sideNavFoot button{color:#ffffff!important}
+.sideNavLinks button:first-child{color:#315de8!important}
+.sideNavLinks button:active,.sideNavLinks button:hover,.sideNavFoot button:not(.sideNavLogout):hover{color:#315de8!important}
+.sideNavBrand{justify-content:flex-start!important;text-align:left!important;margin-right:auto}
+.sideNavBrand>div{text-align:left!important}
+.sideNavHead{justify-content:flex-start!important}
+#sideNavClose{margin-left:auto!important;flex:0 0 35px}
+/* Align tuition title and email block to the left, with logout remaining at the far right */
+header .inner{justify-content:flex-start!important}
+header .inner>div:first-of-type{text-align:left!important;margin-right:auto!important;align-items:flex-start!important}
+header .brand-line{justify-content:flex-start!important;text-align:left!important}
+header #brand,header #who{text-align:left!important}
+</style>
+
+<style id="sidebar-all-buttons-match-overview">
+/* Give every sidebar navigation item the same light blue-violet Overview treatment */
+.sideNavLinks button,.sideNavFoot button{
+  background:linear-gradient(120deg,#edf1ff,#f2edff)!important;
+  color:#315de8!important;
+  border:1px solid #e0e6ff!important;
+  box-shadow:none!important;
+  font-weight:650!important;
+}
+.sideNavLinks button:first-child{
+  background:linear-gradient(120deg,#edf1ff,#f2edff)!important;
+  color:#315de8!important;
+  border-color:#d8e1ff!important;
+}
+.sideNavLinks button:hover,.sideNavLinks button:active,.sideNavFoot button:hover,.sideNavFoot button:active{
+  background:linear-gradient(120deg,#e3eaff,#ebe3ff)!important;
+  color:#244fc9!important;
+}
+.sideNavFoot .sideNavLogout{color:#315de8!important}
+</style>
+<style id="smart-tution-theme-system">
+/* Theme palettes: applied consistently across the workspace without changing app data. */
+body[data-app-theme="royal"]{--app-bg1:#e9edff;--app-bg2:#dfe5fb;--app-head1:#fff;--app-head2:#e0e7ff;--app-head3:#e7dcff;--app-card1:#fff;--app-card2:#f0f2ff;--app-line:#cbd4f2;--app-ink:#14234a;--app-muted:#58698f;--app-accent:#315de8;--app-accent2:#8759e9;--app-soft:#edf1ff;--app-soft2:#f2edff;--app-shadow:#263c8618}
+body[data-app-theme="ocean"]{--app-bg1:#e2f4fb;--app-bg2:#dcecf7;--app-head1:#fff;--app-head2:#d8f0fa;--app-head3:#dce9ff;--app-card1:#fff;--app-card2:#edf8fc;--app-line:#c5e0ed;--app-ink:#12364c;--app-muted:#547487;--app-accent:#087da8;--app-accent2:#4268d8;--app-soft:#e3f4fa;--app-soft2:#e9efff;--app-shadow:#14516a18}
+body[data-app-theme="emerald"]{--app-bg1:#e5f6ee;--app-bg2:#dcefe7;--app-head1:#fff;--app-head2:#d9f2e6;--app-head3:#e2f4ed;--app-card1:#fff;--app-card2:#eff9f3;--app-line:#c7e4d4;--app-ink:#173d2d;--app-muted:#5b7d6b;--app-accent:#16845b;--app-accent2:#48a58a;--app-soft:#e5f5ec;--app-soft2:#e8f5f1;--app-shadow:#1c694518}
+body[data-app-theme="rose"]{--app-bg1:#faeaf1;--app-bg2:#f3e4f2;--app-head1:#fff;--app-head2:#f9e3ed;--app-head3:#eee4fb;--app-card1:#fff;--app-card2:#fff1f6;--app-line:#efd0df;--app-ink:#51283f;--app-muted:#8a6178;--app-accent:#c0447b;--app-accent2:#8055c9;--app-soft:#fbeaf2;--app-soft2:#f1eafd;--app-shadow:#783a5b18}
+body[data-app-theme]{background:radial-gradient(ellipse at 8% 0%,var(--app-bg1),transparent 42%),linear-gradient(145deg,var(--app-bg1),var(--app-bg2))!important;color:var(--app-ink)!important}
+body[data-app-theme] header{background:linear-gradient(110deg,var(--app-head1),var(--app-head2) 60%,var(--app-head3))!important;border-color:var(--app-line)!important}
+body[data-app-theme] .card,body[data-app-theme] .class-section,body[data-app-theme] .stat-card,body[data-app-theme] .panel{background:linear-gradient(145deg,var(--app-card1),var(--app-card2))!important;border-color:var(--app-line)!important;box-shadow:0 10px 26px var(--app-shadow)!important;color:var(--app-ink)!important}
+body[data-app-theme] input,body[data-app-theme] select,body[data-app-theme] textarea{background:var(--app-card1)!important;border-color:var(--app-line)!important;color:var(--app-ink)!important}
+body[data-app-theme] button:not(.add-student):not(.quick-action):not(.quick-card){--unused:0}
+body[data-app-theme] button.secondary{background:var(--app-soft)!important;color:var(--app-accent)!important;border-color:var(--app-line)!important}
+body[data-app-theme] #menuButton{background:linear-gradient(120deg,var(--app-accent),var(--app-accent2))!important;border-color:var(--app-accent)!important}
+body[data-app-theme] #sideNavDrawer{background:var(--app-card1)!important;color:var(--app-ink)!important}
+body[data-app-theme] .sideNavMark{background:linear-gradient(135deg,var(--app-accent),var(--app-accent2))!important}
+body[data-app-theme] .sideNavLinks button,body[data-app-theme] .sideNavFoot button{background:linear-gradient(120deg,var(--app-soft),var(--app-soft2))!important;color:var(--app-accent)!important;border:1px solid var(--app-line)!important}
+body[data-app-theme] .sideNavLinks button:hover,body[data-app-theme] .sideNavLinks button:active,body[data-app-theme] .sideNavFoot button:hover{filter:brightness(.97)}
+body[data-app-theme] .sideNavHead,body[data-app-theme] .sideNavFoot{border-color:var(--app-line)!important}
+body[data-app-theme] #sideNavClose{background:var(--app-soft)!important;color:var(--app-accent)!important;border-color:var(--app-line)!important}
+#sideThemeArea{padding:0 0 14px;border-bottom:1px solid var(--app-line,#e0e6f7);margin-bottom:10px}
+#sideThemeToggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 13px;border:1px solid var(--app-line,#e0e6f7);border-radius:11px;background:var(--app-soft,#edf1ff)!important;color:var(--app-accent,#315de8)!important;font-weight:700;box-shadow:none!important}
+#sideThemeChoices{display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px 2px 2px}
+#sideThemeChoices.open{display:grid}
+#sideThemeChoices button{display:flex;align-items:center;gap:7px;padding:9px 8px;border:1px solid var(--app-line,#dce4ff);border-radius:10px;background:var(--app-card1,#fff)!important;color:var(--app-ink,#14234a)!important;font-size:12px;font-weight:650;box-shadow:none!important}
+#sideThemeChoices button[aria-pressed="true"]{outline:2px solid var(--app-accent,#315de8);background:var(--app-soft,#edf1ff)!important}
+.theme-swatch{width:17px;height:17px;border-radius:50%;display:inline-block;flex:0 0 17px}
+</style>
+<style id="student-arrow-no-background-fix">
+/* Only the arrow row is made clickable; keep the existing student-card background unchanged. */
+.student-row-open,
+.student-row-open:hover,
+.student-row-open:active,
+.student-row-open:focus {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.student-row-open { border: 0 !important; color: inherit !important; }
+</style>
+<style id="portal-navigation-fixes">#menuButton.portal-hidden{display:none!important}.portal-shell{padding:0 0 100px!important}.portal-page{min-height:160px}.portal-page.hide{display:none!important}.portal-uid-card{margin-bottom:8px}.portal-bottom-nav{position:fixed!important;left:0;right:0;bottom:0;z-index:1000;display:flex;justify-content:space-around;align-items:center;gap:2px;padding:8px max(6px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left));background:#ffffffed!important;border-top:1px solid #e0e6f2!important;box-shadow:0 -7px 24px #344b8515!important;backdrop-filter:blur(18px)}.portal-bottom-nav button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 2px;border:0!important;border-radius:12px;background:transparent!important;color:#71809c!important;box-shadow:none!important;font-size:11px}.portal-bottom-nav button span{font-size:21px;line-height:1.1}.portal-bottom-nav button.active{background:#edf1ff!important;color:#315de8!important}.portal-home-siblings{margin-top:14px}#studentPortal{padding-bottom:env(safe-area-inset-bottom)}</style></head><body>
+<header><div class="inner"><div><span class="hero-tag">✦ PREMIUM TEACHER WORKSPACE</span><div class="brand-line"><img id="headerLogo" class="tuition-logo header-logo hide" alt="Tuition logo"><h1>🎓 <span id="brand">Smart Tution</span></h1></div><small id="who">Your teaching, beautifully organized</small></div><button id="logout" class="hide secondary" onclick="signOutUser()">Log out</button></div></header>
+<main>
+<div id="setup" class="card hide"><h2>Setup required</h2><p>Firebase configuration or owner ID is missing, or Firebase scripts could not load.</p></div>
+<div id="auth" class="card auth-card hide"><h2>Welcome back <span class="accent">✦</span></h2><p class="muted">Choose how you want to sign in.</p>
+<div class="actions"><button class="secondary" type="button" onclick="setLoginMode('teacher')">Teacher</button><button class="secondary" type="button" onclick="setLoginMode('student')">Student / Parent</button></div>
+<div id="teacherLoginFields"><label>Email</label><input id="email" type="email" autocomplete="username" maxlength="254"><label>Password</label><input id="password" type="password" autocomplete="current-password"><div class="actions"><button onclick="login()">Log in →</button><button class="secondary" onclick="registerTeacher()">Request teacher access</button></div><p class="tiny">New teacher accounts remain pending until the owner approves them.</p></div>
+<div id="studentLoginFields" class="hide"><label>Student Portal UID</label><input id="studentLoginUid" type="text" autocomplete="off" maxlength="40" placeholder="Enter the UID provided by your teacher"><button type="button" onclick="openStudentPortalByUid()">Open Student Portal →</button><p class="tiny">Enter the UID provided by your teacher.</p></div></div>
+<div id="waiting" class="card auth-card hide"><h2 id="waitTitle">Awaiting approval</h2><p id="waitMessage">Your account is waiting for owner approval.</p><button class="secondary" onclick="refreshAccount()">Check access again</button></div>
+<div id="studentPortal" class="hide"><section class="panel portal-shell"><div class="row"><div><h2>Student / Parent Portal</h2><p class="muted">Hemdeep Academy · Student access</p></div><button class="danger" type="button" onclick="studentPortalLogout()">Log out</button></div><div class="card portal-uid-card"><b>Portal UID</b><p id="portalNumberLabel" class="muted"></p><p id="portalLoadStatus" class="tiny" aria-live="polite">Connecting securely…</p></div><div id="portalPage-overview" class="portal-page"><div id="portalOverviewCards"></div><div class="card portal-home-siblings"><div class="row"><div><h3>Sibling Details</h3><p class="muted">View students linked to this parent account.</p></div><button type="button" class="secondary" onclick="showPortalTab('siblings')">View</button></div><div id="portalSiblingsHome" class="tiny">Sibling information will appear here.</div></div></div><div id="portalPage-attendance" class="portal-page hide"><h3>Attendance History</h3><div id="portalAttendance" class="muted">Attendance records are not available yet.</div></div><div id="portalPage-results" class="portal-page hide"><h3>Exam Results</h3><div id="portalExams" class="muted">Exam results are not available yet.</div></div><div id="portalPage-fees" class="portal-page hide"><h3>Fees History</h3><div id="portalFees" class="muted">Fee records are not available yet.</div></div><div id="portalPage-profile" class="portal-page hide"><h3>Student Profile</h3><div id="portalProfiles"></div></div><div id="portalPage-siblings" class="portal-page hide"><h3>Sibling Details</h3><div id="portalSiblings"></div></div><nav id="portalBottomNav" class="portal-bottom-nav" aria-label="Student portal navigation"><button type="button" data-portal-tab="overview" class="active"><span>⌂</span>Home</button><button type="button" data-portal-tab="attendance"><span>✓</span>Attendance</button><button type="button" data-portal-tab="results"><span>✎</span>Results</button><button type="button" data-portal-tab="fees"><span>₹</span>Fees</button><button type="button" data-portal-tab="profile"><span>▣</span>Profile</button></nav></section></div>
+<div id="workspace" class="hide">
+<section id="dashboard" class="panel"><div class="hide" aria-hidden="true"><span id="totalStudents"></span><span id="collectedFees"></span></div><h2>Dashboard <span class="accent">✦</span></h2><p class="section-label" id="dashboardMonth"></p><div class="card" id="homeLogoCard"><div class="brand-line dashboard-brand"><img id="homeLogo" class="tuition-logo hide" alt="Tuition logo"><div class="dashboard-brand-copy"><h3 id="homeTuitionTitle">Your tuition</h3><p class="muted" id="homeTuitionThought">Add a tagline in Settings.</p></div></div></div><div class="card"><div class="row"><h3>Class-wise dashboard</h3><span class="badge">Selected class</span></div><label>Filter by class</label><select id="homeClassFilter" onchange="render()"><option value="">All classes</option></select><div class="grid"><div class="card stat"><span>Students in class</span><strong id="homeClassTotal">0</strong></div><div class="card stat"><span>Fees paid</span><strong id="homeClassPaid">0</strong></div><div class="card stat"><span>Fees pending</span><strong id="homeClassUnpaid">0</strong></div><div class="card stat"><span>Collected amount</span><strong id="homeClassAmount">₹0</strong></div></div><div class="row"><h3>Fee collection</h3><b class="accent" id="feePercent">0%</b></div><div class="bar"><div id="feeProgress"></div></div><p class="muted" id="feeSummary"></p><h3 style="margin-top:18px">Collection chart</h3><div id="homeFeeChart" class="chart-bars"></div></div><div id="premiumQuickActions" class="card"></div></section>
+<section id="students" class="panel hide"><div class="row"><h2>Students</h2></div><p id="count" class="muted">0 students</p><div id="studentForm" class="card hide"><h3 id="formTitle">Add student</h3><input id="studentId" type="hidden"><label>Student name *</label><input id="studentName" maxlength="100"><label>Class *</label><input id="studentClass" maxlength="50" placeholder="e.g. 11th"><label>Parent WhatsApp number</label><input id="studentPhone" type="tel" inputmode="tel"><label><input id="studentAccessEnabled" type="checkbox" style="width:auto"> Allow Student / Parent Portal access</label><p class="tiny">When enabled, a UID is generated. Students sharing the same parent mobile number share one UID. Turn OFF to revoke access.</p><label>Student Portal UID</label><div class="actions" style="align-items:center"><input id="studentPortalUid" readonly placeholder="The UID will be generated after saving" style="flex:1;min-width:150px"><button type="button" class="secondary" id="shareStudentUidButton" onclick="shareStudentPortalUid()">Share on WhatsApp</button></div><p class="tiny">You can share the UID through WhatsApp after it has been generated.</p><label>Monthly fee (₹) *</label><input id="studentFee" type="number" min="0" step="1"><div class="actions"><button onclick="saveStudent()">Save student</button><button class="secondary" onclick="toggleForm(false);tab('students')">Cancel</button><button id="deleteStudentFromForm" class="danger hide" type="button" onclick="deleteStudent($('studentId').value)">Delete student</button></div></div><div class="card"><div class="filter-row"><div><label>Filter by class</label><select id="studentClassFilter" onchange="render()"><option value="">All classes</option></select></div><div><label>Search student or class</label><input id="studentSearch" placeholder="Search by name or class" oninput="render()"></div></div><div id="studentList"></div></div></section>
+<section id="fees" class="panel hide"><h2>Monthly fees</h2><div class="card"><div class="filter-row"><div><label>Select month</label><input type="month" id="feeMonth" onchange="render()"></div><div><label>Filter by class</label><select id="feeClassFilter" onchange="render()"><option value="">All classes</option></select></div></div><p id="feeTotal" class="muted"></p><button onclick="showBulk('fees')">📲 Send all unpaid reminders</button><p class="tiny">Opens a review list; WhatsApp messages must be sent individually.</p><div id="feeList"></div></div></section>
+<section id="attendance" class="panel hide"><h2>Attendance</h2><div class="card"><div class="filter-row"><div><label>Select date</label><input type="date" id="attDate" onchange="render()"></div><div><label>Filter by class</label><select id="attClassFilter" onchange="render()"><option value="">All classes</option></select></div></div><button onclick="showBulk('attendance')">📲 Send all absent alerts</button><p class="tiny">Only students marked Absent for the selected date are included.</p><div id="attList"></div></div></section>
+<section id="settings" class="panel hide"><h2>Settings</h2><div class="card"><label>Tuition name</label><input id="tuitionName" maxlength="60"><label>Thought / tagline under tuition name</label><input id="tuitionThought" maxlength="120" placeholder="e.g. Learning today, leading tomorrow"><p class="tiny">This thought will appear below your tuition name on the Dashboard.</p><label>WhatsApp fee reminder template</label><textarea id="reminderTemplate" rows="4"></textarea><p class="tiny">Use {student}, {month}, {fee}, {tuition}.</p><label>WhatsApp absent alert template</label><textarea id="absentTemplate" rows="4"></textarea><p class="tiny">Use {student}, {date}, {tuition}.</p><button onclick="saveSettings()">Save settings</button><hr style="border-color:var(--line);margin:22px 0"><h3>Tuition logo</h3><p class="tiny">Choose your tuition logo (PNG, JPG or WEBP, up to 10 MB). The app will compress it and save it in your existing Firestore teacher profile, without Firebase Storage.</p><div class="row" style="justify-content:flex-start;margin:10px 0"><img id="settingsLogoPreview" class="tuition-logo hide" alt="Selected tuition logo preview"><span id="logoCurrentLabel" class="tiny">No logo uploaded yet.</span></div><label for="logoFile">Select logo image</label><input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp"><button type="button" onclick="uploadLogo()">Upload tuition logo</button><p id="logoStatus" class="tiny" aria-live="polite"></p><hr style="border-color:var(--line);margin:22px 0"><h3>Teacher profile</h3><label>Your full name</label><input id="teacherFullName" maxlength="100"><label>Mobile number</label><input id="teacherMobile" type="tel" maxlength="20"><label>Tuition name</label><input id="teacherTuitionName" maxlength="60"><button onclick="saveTeacherProfile()">Save teacher profile</button></div><p class="notice">Internet is required to access data. For safety, log out after use on shared devices and never share your password.</p></section>
+<section id="owner" class="panel hide"><h2>👑 Owner Panel</h2><div id="ownerManagement" class="card"><p class="muted">Approve, deny, revoke or remove teacher requests. Removing a request does not delete its Firebase Authentication account or student data.</p><div id="teacherList">Loading teacher accounts...</div></div></section>
+<nav class="nav" id="bottomNav"><button data-tab="dashboard" class="active" onclick="tab('dashboard')"><span class="icon">⌂</span>Home</button><button data-tab="students" onclick="tab('students')"><span class="icon">♙</span>Students</button><button data-tab="fees" onclick="tab('fees')"><span class="icon">₹</span>Fees</button><button data-tab="attendance" onclick="tab('attendance')"><span class="icon">✓</span>Attendance</button><button data-tab="settings" onclick="tab('settings')"><span class="icon">⚙</span>Settings</button><button id="adminBtn" data-tab="owner" onclick="tab('owner')"><span class="icon">♙</span><span id="profileNavLabel">Profile</span></button></nav>
+</div>
+<div id="queue" class="queue hide"><div class="row"><h3 id="queueTitle">WhatsApp messages</h3><button class="secondary" onclick="visible('queue',false)">Close ✕</button></div><p class="tiny">Review each message and tap Open WhatsApp. You must press Send yourself; opening the link does not send it.</p><div id="queueList"></div></div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+<script>
+"use strict";
+const firebaseConfig={apiKey:"AIzaSyD1mXEjy41T7qcf5JmPV4XxRZDi6MAIyjY",authDomain:"smart-tution-e8d6a.firebaseapp.com",projectId:"smart-tution-e8d6a",storageBucket:"smart-tution-e8d6a.firebasestorage.app",messagingSenderId:"825744636173",appId:"1:825744636173:web:8806a8b36bd51de359d844"};
+const OWNER_UID="IOfHmpenS5gCHqf0e9WKqnJcUR13";
+const $=id=>document.getElementById(id);
+const template="Dear Parent, {student}'s tuition fee of ₹{fee} for {month} is pending. Please pay at your convenience. Thank you, {tuition}.";
+const defaultAbsentTemplate="Dear Parent, {student} was marked absent from {tuition} on {date}. Please contact us if needed. Thank you.";
+let auth,db,user=null,profile=null,students=[],payments={},attendance={},portalMode=false,settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,logoUrl:""},listeners=[],ownerUnsub=null;
+function visible(id,on){const el=$(id);if(el)el.classList.toggle("hide",!on)}
+function escapeHTML(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function err(e){alert(e?.message||String(e))}
+function clearListeners(){listeners.forEach(f=>f());listeners=[];if(ownerUnsub){ownerUnsub();ownerUnsub=null}}
+function screen(name){["setup","auth","waiting","workspace","studentPortal"].forEach(id=>visible(id,id===name));visible("logout",!!user&&name==="workspace");const mb=$("menuButton");if(mb)mb.classList.toggle("portal-hidden",name!=="workspace");visible("bottomNav",name==="workspace");visible("portalBottomNav",name==="studentPortal");visible("queue",false);$("who").textContent=user?.email||(portalMode?"Student / Parent portal":"Your teaching, beautifully organized");}
+
+function setLoginMode(mode){visible("teacherLoginFields",mode==="teacher");visible("studentLoginFields",mode==="student");}
+function normalizeStudentPhone(v){let n=String(v||"").replace(/\D/g,"");if(n.length===10)n="91"+n;if(n.length===12&&n.startsWith("91"))return "+"+n;return null;}
+let activePortalUid="", portalSessionUser=null, portalLoadPromise=null;
+function showPortalTab(id){const allowed=["overview","attendance","results","fees","profile","siblings"];if(!allowed.includes(id))id="overview";allowed.forEach(k=>visible("portalPage-"+k,k===id));document.querySelectorAll("#portalBottomNav [data-portal-tab]").forEach(b=>b.classList.toggle("active",b.dataset.portalTab===(id==="siblings"?"overview":id)));}
+function showPortalLoadError(error){const code=error&&error.code;const msg=code==="permission-denied"?"Access denied. Publish the Firestore security rules.":code==="auth/operation-not-allowed"?"Anonymous Authentication is disabled. Enable it in Firebase Console → Authentication → Sign-in method.":(error&&error.message||String(error));$("portalLoadStatus").textContent="Unable to load portal records: "+msg;const html="<div class='notice'><b>Portal setup required</b><p>Records cannot be loaded until Firebase Authentication and Firestore permissions are configured. Please complete the Firebase setup, then try again.</p></div>";["portalFees","portalAttendance","portalExams","portalProfiles","portalSiblings","portalSiblingsHome","portalOverviewCards"].forEach(id=>{if($(id))$(id).innerHTML=html;});}
+function startPortalLoad(uid){if(portalLoadPromise)return portalLoadPromise;const timeout=new Promise((_,reject)=>setTimeout(()=>reject(new Error("The request timed out. Check your internet connection and Firebase setup.")),15000));portalLoadPromise=Promise.race([loadStudentPortal(uid),timeout]).catch(e=>{console.error(e);showPortalLoadError(e);}).finally(()=>{portalLoadPromise=null;});return portalLoadPromise;}
+async function openStudentPortalByUid(){
+ const uid=String($("studentLoginUid").value||"").trim().toUpperCase();if(!/^HDA-[A-Z0-9]{20,32}$/i.test(uid))return alert("Enter a valid Student UID provided by your teacher.");
+ activePortalUid=uid;try{localStorage.setItem("smartTutionPortalUid",uid);}catch(e){}$("portalNumberLabel").textContent="UID: "+uid;portalMode=true;screen("studentPortal");showPortalTab("overview");$("portalLoadStatus").textContent="Connecting securely…";
+ try{await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);if(!auth.currentUser||!auth.currentUser.isAnonymous){const cred=await auth.signInAnonymously();portalSessionUser=cred.user;}else portalSessionUser=auth.currentUser;await startPortalLoad(uid);}catch(e){console.error(e);showPortalLoadError(e);}
+}
+function backToPortalLogin(){studentPortalLogout();}
+async function studentPortalLogout(){portalMode=false;activePortalUid="";portalSessionUser=null;portalLoadPromise=null;try{localStorage.removeItem("smartTutionPortalUid");}catch(e){}try{if(auth?.currentUser?.isAnonymous)await auth.signOut();}catch(e){console.warn(e)}$("studentLoginUid").value="";screen("auth");setLoginMode("teacher");}
+function portalEsc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;", "'":"&#39;"}[c]));}
+function portalMoney(v){return "₹"+Number(v||0).toLocaleString("en-IN");}
+async function loadStudentPortal(uid){
+  if(!auth.currentUser?.isAnonymous)throw Error("Student portal session missing. Please enter UID again.");
+  ["portalFees","portalAttendance","portalExams"].forEach(id=>$(id).textContent="Loading…");
+  await db.collection("studentPortalSessions").doc(auth.currentUser.uid).set({portalUid:uid,createdAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+  const tokenSnap=await db.collection("studentPortalTokens").doc(uid).get();
+  if(!tokenSnap.exists)throw Error("UID not found. Please confirm the correct UID with your teacher.");
+  const token=tokenSnap.data()||{};
+  if(token.active!==true || !Array.isArray(token.studentIds) || !token.studentIds.length)throw Error("Portal access for this UID has been disabled by the teacher.");
+  const teacherUid=token.teacherUid, ids=token.studentIds.slice(0,30);
+  const base=db.collection("teacherData").doc(teacherUid);
+  const studentSnaps=await Promise.all(ids.map(id=>base.collection("students").doc(id).get()));
+  const kids=studentSnaps.filter(x=>x.exists).map(x=>({id:x.id,...x.data()}));
+  if(!kids.length)throw Error("No student record was found for this UID.");
+  const chunks=[];for(let i=0;i<ids.length;i+=10)chunks.push(ids.slice(i,i+10));
+  async function getByIds(col){let out=[];for(const part of chunks){const q=await base.collection(col).where("studentId","in",part).get();q.forEach(d=>out.push({id:d.id,...d.data()}));}return out;}
+  const [fees,att,exams]=await Promise.all([getByIds("payments"),getByIds("attendance"),getByIds("exams")]);
+  if(activePortalUid!==uid)return;
+  const fmtDate=v=>v||"—";
+  const profileCards=kids.map(k=>`<div class="card"><div class="row"><h3>${portalEsc(k.name||"Student")}</h3><span class="pill">${portalEsc(k.className||"")}</span></div><p class="muted">Parent: ${portalEsc(k.parentName||"Not added")}</p><p class="muted">Monthly fee: <b>${portalMoney(k.fee)}</b></p><p class="muted">Date of birth: ${portalEsc(k.dob||"Not added")}</p><p class="muted">Address: ${portalEsc(k.address||"Not added")}</p></div>`).join("");
+  $("portalOverviewCards").innerHTML=profileCards||"<p class='muted'>No student profile found.</p>";$("portalProfiles").innerHTML=profileCards||"<p class='muted'>No profile found.</p>";
+  $("portalSiblings").innerHTML=kids.length>1?kids.map(k=>`<div class="item"><b>${portalEsc(k.name||"Student")}</b> <span class="pill">${portalEsc(k.className||"")}</span><p class="muted">Monthly fee: ${portalMoney(k.fee)}</p></div>`).join(""):"<p class='muted'>No additional siblings are linked to this UID.</p>";if($("portalSiblingsHome"))$("portalSiblingsHome").innerHTML=kids.length>1?`${kids.length-1} additional sibling(s) linked to this account.`:"No additional siblings are linked to this account.";
+  fees.sort((a,b)=>String(b.id).localeCompare(String(a.id)));
+  $("portalFees").innerHTML=fees.length?fees.map(f=>{const kid=kids.find(k=>k.id===f.studentId);const ym=f.month||f.id.split("_")[0];const amount=Number(f.amountPaid??(f.paid?(kid?.fee||0):0));return `<div class="item"><div class="row"><b>${portalEsc(kid?.name||f.studentName||"Student")}</b><span class="pill ${f.paid?"paid":""}">${f.paid?"Paid":"Unpaid"}</span></div><p class="muted">${portalEsc(ym)} · ${portalMoney(amount)}</p></div>`}).join(""):'<p class="muted">No fee records have been saved yet.</p>';
+  att.sort((a,b)=>String(b.date||b.id).localeCompare(String(a.date||a.id)));
+  $("portalAttendance").innerHTML=att.length?att.map(a=>{const kid=kids.find(k=>k.id===a.studentId);const date=a.date||a.id.split("_")[0];return `<div class="item"><div class="row"><b>${portalEsc(kid?.name||a.studentName||"Student")}</b><span class="pill ${portalEsc(a.status||"")}">${portalEsc(a.status||"—")}</span></div><p class="muted">${portalEsc(date)}</p></div>`}).join(""):'<p class="muted">No attendance records have been saved yet.</p>';
+  exams.sort((a,b)=>String(b.examDate||"").localeCompare(String(a.examDate||"")));
+  $("portalExams").innerHTML=exams.length?exams.map(e=>`<div class="item"><b>${portalEsc(e.studentName||kids.find(k=>k.id===e.studentId)?.name||"Student")} · ${portalEsc(e.examName||"Exam")}</b><p class="muted">${portalEsc(fmtDate(e.examDate))}</p><p><b>${portalEsc(e.obtainedMarks)} / ${portalEsc(e.totalMarks)}</b> · ${portalEsc(e.percentage)}%</p></div>`).join(""):'<p class="muted">No exam results have been saved yet.</p>';
+  $("portalLoadStatus").textContent=`Connected · ${kids.length} linked student(s). Records are read-only.`;showPortalTab("overview");
+}
+
+async function registerTeacher(){
+  const email=$("email").value.trim(),password=$("password").value;
+  if(!email||!password)return alert("Enter your email and password first.");
+  if(password.length<6)return alert("Password must be at least 6 characters.");
+  try{
+    const cred=await auth.createUserWithEmailAndPassword(email,password);
+    await db.collection("users").doc(cred.user.uid).set({email:cred.user.email,status:"pending",createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    await refreshAccount();
+  }catch(e){
+    alert(e.code==="auth/email-already-in-use"?"This email already has an account. Please log in.":e.code==="auth/weak-password"?"Choose a stronger password.":"Could not submit the access request. Please check your connection or contact the owner.");
+  }
+}
+async function login(){const email=$("email").value.trim();const password=$("password").value;if(!email||!password)return alert("Enter your email and password.");try{await auth.signInWithEmailAndPassword(email,password)}catch(e){alert("Login failed. Check your email and password, or contact the app owner.")}}
+async function signOutUser(){try{if(!auth||!auth.currentUser){studentPortalLogout();return}await auth.signOut();students=[];payments={};attendance={};profile=null;portalMode=false;settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,logoUrl:""};visible("queue",false)}catch(e){err(e)}}
+async function refreshAccount(){if(!user)return;try{const doc=await db.collection("users").doc(user.uid).get({source:"server"});if(!auth.currentUser||auth.currentUser.uid!==user.uid)return;profile=doc.exists?doc.data():null;$("teacherFullName").value=profile?.fullName||"";$("teacherMobile").value=profile?.mobile||"";$("teacherTuitionName").value=profile?.tuitionName||"";if(user.uid===OWNER_UID){profile={...(profile||{}),status:"approved"};startWorkspace()}else if(profile?.status==="approved"){startWorkspace()}else{clearListeners();screen("waiting");$("waitTitle").textContent=profile?.status==="revoked"?"Access revoked":profile?.status==="denied"?"Request denied":profile?"Awaiting approval":"No access request found";$("waitMessage").textContent=profile?.status==="revoked"?"The owner has removed your access.":profile?.status==="denied"?"The owner denied your request.":profile?"Your account is waiting for owner approval.":"Your account exists, but the owner has no pending request for it. Contact the owner."}}catch(e){console.error("Smart Tution account verification failed:",e);clearListeners();screen("waiting");$("waitTitle").textContent="Account verification error";const code=e&&e.code?e.code:(e&&e.name?e.name:"Unknown error");const message=e&&e.message?e.message:String(e);$("waitMessage").textContent="Code: "+code+" — "+message+". Check the browser console if more details are needed."}}
+function startWorkspace(){clearListeners();screen("workspace");visible("adminBtn",user.uid===OWNER_UID);visible("ownerManagement",user.uid===OWNER_UID);tab("dashboard");const base=db.collection("teacherData").doc(user.uid);listeners.push(base.collection("students").onSnapshot(s=>{students=s.docs.map(d=>({id:d.id,...d.data()}));render();if(window.migratePortalHistory)window.migratePortalHistory()},err));listeners.push(base.collection("payments").onSnapshot(s=>{payments={};s.docs.forEach(d=>payments[d.id]=d.data().paid);render()},err));listeners.push(base.collection("attendance").onSnapshot(s=>{attendance={};s.docs.forEach(d=>attendance[d.id]=d.data().status);render()},err));listeners.push(base.onSnapshot(s=>{settings={name:"Smart Tution",template,absentTemplate:defaultAbsentTemplate,tuitionThought:"",...(s.data()||{})};$("tuitionName").value=settings.name;$("tuitionThought").value=settings.tuitionThought||"";$("homeTuitionThought").textContent=settings.tuitionThought||"Add a tagline in Settings.";$("reminderTemplate").value=settings.template;$("absentTemplate").value=settings.absentTemplate||defaultAbsentTemplate;$("brand").textContent=settings.name;$("homeTuitionTitle").textContent=settings.name;setLogo(settings.logoDataUrl||settings.logoUrl||"")},err));if(user.uid===OWNER_UID){ownerUnsub=db.collection("users").onSnapshot(s=>renderTeachers(s.docs),e=>{$("teacherList").textContent="Unable to load teacher requests: "+e.message})}}
+function tab(id){const ws=$("workspace"),target=$(id);if(!ws||!target||!ws.contains(target))return;ws.querySelectorAll(":scope > .panel").forEach(el=>visible(el.id,el.id===id));document.querySelectorAll("#bottomNav button").forEach(el=>el.classList.toggle("active",el.dataset.tab===id));visible("queue",false);if(typeof render==="function")render();}
+function toggleForm(open){visible("studentForm",open);if($("deleteStudentFromForm"))visible("deleteStudentFromForm",false);if(open){$("studentId").value="";$("formTitle").textContent="Add student";["studentName","studentClass","studentPhone","studentFee"].forEach(x=>$(x).value="");$("studentAccessEnabled").checked=false;if($("studentPortalUid"))$("studentPortalUid").value="";if($("shareStudentUidButton"))$("shareStudentUidButton").disabled=true;$("studentForm").scrollIntoView({behavior:"smooth",block:"nearest"})}}
+function editStudent(id){const s=students.find(x=>x.id===id);if(!s)return;if(typeof window.tab==="function")window.tab("addStudentPanel");visible("studentForm",true);visible("deleteStudentFromForm",true);$("formTitle").textContent="Edit student";$("studentId").value=id;$("studentName").value=s.name||"";$("studentClass").value=s.className||"";$("studentPhone").value=s.phone||"";$("studentFee").value=s.fee??0;$("studentAccessEnabled").checked=!!s.portalAccess;if($("studentPortalUid"))$("studentPortalUid").value=s.portalUid||"";if($("shareStudentUidButton"))$("shareStudentUidButton").disabled=!(s.portalAccess&&s.portalUid&&s.phone);$("studentForm").scrollIntoView({behavior:"smooth",block:"nearest"})}
+function studentRef(id){return db.collection("teacherData").doc(user.uid).collection("students").doc(id)}
+async function saveStudent(){try{const name=$("studentName").value.trim(),className=$("studentClass").value.trim(),fee=Number($("studentFee").value);if(!name||!className||$("studentFee").value===""||!Number.isFinite(fee)||fee<0)throw Error("Enter a student name, class and valid fee");const id=$("studentId").value;const ref=id?studentRef(id):db.collection("teacherData").doc(user.uid).collection("students").doc();const phone=$("studentPhone").value.trim(),portalAccess=$("studentAccessEnabled").checked;if(portalAccess&&!/^\+?91?[- ]?\d{10}$|^\d{10}$/.test(phone.replace(/\s/g,"")))throw Error("Enter a valid 10-digit mobile number to enable portal access.");await ref.set({name,className,phone,fee,portalAccess});await db.collection("teacherData").doc(user.uid).collection("studentAccess").doc(ref.id).set({phone:normalizeStudentPhone(phone)||"",active:portalAccess,studentId:ref.id,studentName:name,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});toggleForm(false);if(typeof window.tab==="function")window.tab("students")}catch(e){err(e)}}
+async function deleteStudent(id){if(!confirm("Delete this student? Old fee and attendance records may remain in the database."))return;try{const access=db.collection("teacherData").doc(user.uid).collection("studentAccess"),ref=access.doc(id),snap=await ref.get(),uid=snap.exists?snap.data().portalUid:"";const batch=db.batch();if(uid){const others=(await access.where("portalUid","==",uid).get()).docs.filter(d=>d.id!==id&&d.data().active).map(d=>d.id);batch.set(db.collection("studentPortalTokens").doc(uid),{teacherUid:user.uid,studentIds:others,active:others.length>0,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});}batch.delete(ref);batch.delete(studentRef(id));await batch.commit()}catch(e){err(e)}}
+function month(){return $("feeMonth").value}function paidKey(id){return month()+"_"+id}
+async function togglePaid(id){try{const s=students.find(x=>x.id===id);const nextPaid=!payments[paidKey(id)];await db.collection("teacherData").doc(user.uid).collection("payments").doc(paidKey(id)).set({studentId:id,studentName:s?.name||"",month:month(),paid:nextPaid,amountPaid:nextPaid?Number(s?.fee||0):0,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}catch(e){err(e)}}
+async function mark(id,status){try{await db.collection("teacherData").doc(user.uid).collection("attendance").doc($("attDate").value+"_"+id).set({studentId:id,date:$("attDate").value,status},{merge:true})}catch(e){err(e)}}
+function phoneNumber(s){let n=(s.phone||"").replace(/\D/g,"");if(n.length===10)n="91"+n;return n.length>=11&&n.length<=15?n:null}
+function feeMessage(s){return(settings.template||template).replace(/\{student\}/g,s.name).replace(/\{month\}/g,month()).replace(/\{fee\}/g,s.fee).replace(/\{tuition\}/g,settings.name)}
+function absentMessage(s){return (settings.absentTemplate||defaultAbsentTemplate).replace(/\{student\}/g,s.name).replace(/\{date\}/g,$("attDate").value).replace(/\{tuition\}/g,settings.name||"Smart Tution")}
+function whatsAppLink(s,type){const n=phoneNumber(s);return n?"https://wa.me/"+n+"?text="+encodeURIComponent(type==="fees"?feeMessage(s):absentMessage(s)):null}
+function sendAlert(id,type){const s=students.find(x=>x.id===id);if(!s)return;const url=whatsAppLink(s,type);if(!url)return alert("Enter a valid parent WhatsApp number for "+s.name);window.open(url,"_blank","noopener,noreferrer")}
+function reminder(id){sendAlert(id,"fees")}
+function filteredFor(type){const selected=$(type==="fees"?"feeClassFilter":"attClassFilter").value;return sortStudents(students.filter(s=>!selected||classLabel(s)===selected))}
+function showBulk(type){const targets=filteredFor(type).filter(s=>type==="fees"?!payments[paidKey(s.id)]:attendance[$("attDate").value+"_"+s.id]==="Absent");$("queueTitle").textContent=type==="fees"?"Unpaid fee reminders":"Absent student alerts";$("queueList").innerHTML=targets.length?targets.map(s=>{const url=whatsAppLink(s,type);return `<div class="item"><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span><div class="muted">${url?"Ready to open in WhatsApp":"Parent phone missing or invalid"}</div>${url?`<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">Open WhatsApp ↗</a>`:""}</div>`}).join(""):'<div class="empty">No matching students found.</div>';visible("queue",true);$("queue").scrollIntoView({behavior:"smooth",block:"start"})}
+async function saveSettings(){try{const tuitionThought=$("tuitionThought").value.trim();await db.collection("teacherData").doc(user.uid).set({name:$("tuitionName").value.trim()||"Smart Tution",tuitionThought,template:$("reminderTemplate").value.trim()||template,absentTemplate:$("absentTemplate").value.trim()||defaultAbsentTemplate},{merge:true});settings={...settings,name:$("tuitionName").value.trim()||"Smart Tution",tuitionThought};$("brand").textContent=settings.name;$("homeTuitionTitle").textContent=settings.name;$("homeTuitionThought").textContent=tuitionThought||"Add a tagline in Settings.";alert("Settings saved")}catch(e){err(e)}}
+function setLogo(url){const ids=["homeLogo","headerLogo","settingsLogoPreview"];ids.forEach(id=>{const img=$(id);if(!img)return;if(url){img.src=url;visible(id,true)}else{img.removeAttribute("src");visible(id,false)}});const label=$("logoCurrentLabel");if(label)label.textContent=url?"Your tuition logo is uploaded.":"No logo uploaded yet."}
+function fileToDataUrl(blob){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result||""));reader.onerror=()=>reject(new Error("Could not read the compressed logo."));reader.readAsDataURL(blob)})}
+async function compressLogo(file){
+  const objectUrl=URL.createObjectURL(file);
+  try{
+    const img=new Image();img.src=objectUrl;await img.decode();
+    const maxSide=512,scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));
+    const canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
+    const ctx=canvas.getContext("2d");if(!ctx)throw new Error("Image compression is not supported in this browser.");
+    ctx.fillStyle="#ffffff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+    for(const type of ["image/webp","image/jpeg"]){
+      for(const quality of [0.82,0.72,0.62,0.52,0.42]){
+        const blob=await new Promise(resolve=>canvas.toBlob(resolve,type,quality));
+        if(blob&&blob.size<=300*1024){const dataUrl=await fileToDataUrl(blob);if(dataUrl.length<450000)return dataUrl;}
+      }
+    }
+    throw new Error("The logo could not be compressed. Please choose a smaller image.");
+  }finally{URL.revokeObjectURL(objectUrl)}
+}
+$("logoFile")?.addEventListener("change",()=>{const file=$("logoFile").files?.[0],status=$("logoStatus"),preview=$("settingsLogoPreview");if(!file)return;if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>10*1024*1024){if(status)status.textContent="Choose PNG, JPG or WEBP under 10 MB.";$("logoFile").value="";return}const reader=new FileReader();reader.onload=()=>{if(preview){preview.src=reader.result;visible("settingsLogoPreview",true)}};reader.readAsDataURL(file);if(status)status.textContent="Image selected. Tap Upload tuition logo to compress and save."});
+async function uploadLogo(){
+  const file=$("logoFile")?.files?.[0];if(!user||!db)return alert("Please sign in first.");if(!file)return alert("Please choose a logo image first.");
+  if(!["image/png","image/jpeg","image/webp"].includes(file.type)||file.size>10*1024*1024)return alert("Choose PNG, JPG or WEBP under 10 MB.");
+  const status=$("logoStatus");try{
+    status.textContent="Compressing logo...";const dataUrl=await compressLogo(file);
+    status.textContent="Saving logo to your teacher profile...";
+    await db.collection("teacherData").doc(user.uid).set({logoDataUrl:dataUrl},{merge:true});
+    settings={...settings,logoDataUrl:dataUrl};setLogo(dataUrl);status.textContent="Logo saved successfully. It will appear on other devices when you sign in.";$("logoFile").value="";
+  }catch(e){status.textContent="Could not save logo: "+(e.message||e);err(e)}
+}
+async function saveTeacherProfile(){const data={fullName:$("teacherFullName").value.trim(),mobile:$("teacherMobile").value.trim(),tuitionName:$("teacherTuitionName").value.trim()};if(!data.fullName||!data.mobile||!data.tuitionName)return alert("Please fill all three profile fields.");try{await db.collection("users").doc(user.uid).set(data,{merge:true});alert("Teacher profile saved.")}catch(e){err(e)}}
+function sortStudents(arr){return [...arr].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""),undefined,{numeric:true}))}
+function classLabel(s){return String(s.className||"Not specified").trim()||"Not specified"}
+function populateClassFilters(){const classes=[...new Set(students.map(classLabel))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));for(const id of ["feeClassFilter","attClassFilter","homeClassFilter","studentClassFilter"]){const el=$(id),old=el.value;el.innerHTML='<option value="">All classes</option>'+classes.map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");el.value=classes.includes(old)?old:""}}
+function studentCard(s){const accessPill=s.portalAccess?'<span class="pill approved">Portal enabled</span>':'<span class="pill revoked">Portal disabled</span>';const avatar=s.studentPhotoDataUrl?`<img class="student-avatar" src="${escapeHTML(s.studentPhotoDataUrl)}" alt="${escapeHTML(s.name)} photo">`:`<div class="student-avatar student-avatar-fallback">${escapeHTML(String(s.name||"S").trim().split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase())}</div>`;const shareButton=s.portalAccess&&s.portalUid&&s.phone?`<div class="feature-actions"><button type="button" class="secondary" onclick="shareStudentPortalUid('${s.id}')">Share UID on WhatsApp</button></div>`:'';return `<div class="item student-row-card"><button type="button" class="student-row-open" onclick="editStudent('${s.id}')" aria-label="Edit ${escapeHTML(s.name)}"><span class="student-row-main"><span>${avatar}</span><span class="student-row-text"><b>${escapeHTML(s.name)}</b> <span class="pill">${escapeHTML(classLabel(s))}</span> ${accessPill}<span class="muted">₹${Number(s.fee||0).toLocaleString("en-IN")}/month · ${payments[paidKey(s.id)]?"Paid":"Unpaid"}</span></span></span><span class="student-row-chevron" aria-hidden="true">›</span></button>${shareButton}</div>`}
+function render(){if(!user||!profile||$("workspace").classList.contains("hide"))return;populateClassFilters();const homeClass=$("homeClassFilter").value,homeStudents=students.filter(s=>!homeClass||classLabel(s)===homeClass),total=homeStudents.length,paid=homeStudents.filter(s=>payments[paidKey(s.id)]),amount=paid.reduce((a,s)=>a+Number(s.fee||0),0),expected=homeStudents.reduce((a,s)=>a+Number(s.fee||0),0),percent=expected?Math.min(100,Math.round(amount/expected*100)):0;$("totalStudents").textContent=total;$("collectedFees").textContent="₹"+amount.toLocaleString("en-IN");$("feePercent").textContent=percent+"%";$("feeProgress").style.width=percent+"%";$("feeSummary").textContent="₹"+amount.toLocaleString("en-IN")+" collected of ₹"+expected.toLocaleString("en-IN")+" expected";$("dashboardMonth").textContent="Overview for "+(month()||"current month");const homeUnpaid=homeStudents.filter(s=>!payments[paidKey(s.id)]);$("homeClassTotal").textContent=homeStudents.length;$("homeClassPaid").textContent=paid.length;$("homeClassUnpaid").textContent=homeUnpaid.length;$("homeClassAmount").textContent="₹"+amount.toLocaleString("en-IN");const chartParts=[{label:"Collected",value:amount},{label:"Pending",value:Math.max(0,expected-amount)}],chartMax=Math.max(1,...chartParts.map(x=>x.value));$("homeFeeChart").innerHTML=chartParts.map(x=>`<div class="chart-row"><span>${x.label}</span><div class="chart-track"><div style="width:${Math.round(x.value/chartMax*100)}%"></div></div><b>₹${x.value.toLocaleString("en-IN")}</b></div>`).join("");$("count").textContent=total+" students";
+const sq=$("studentSearch").value.trim().toLowerCase(),selectedStudentClass=$("studentClassFilter").value,filtered=students.filter(s=>(!selectedStudentClass||classLabel(s)===selectedStudentClass)&&(String(s.name||"")+" "+classLabel(s)).toLowerCase().includes(sq)),groups=new Map();for(const s of filtered){const label=classLabel(s);if(!groups.has(label))groups.set(label,[]);groups.get(label).push(s)}const sortedGroups=[...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0],undefined,{numeric:true}));$("studentList").innerHTML=sortedGroups.map(([label,group])=>`<div class="class-section"><div class="row"><h3 class="class-heading">📘 ${/^class\b/i.test(label)?escapeHTML(label):"Class "+escapeHTML(label)}</h3><span class="muted">${group.length} student${group.length===1?"":"s"}</span></div>${sortStudents(group).map(studentCard).join("")}</div>`).join("")||'<div class="empty">No students found.</div>';
+const feeStudents=filteredFor("fees"),feePaid=feeStudents.filter(s=>payments[paidKey(s.id)]),feeAmount=feePaid.reduce((a,s)=>a+Number(s.fee||0),0),feeExpected=feeStudents.reduce((a,s)=>a+Number(s.fee||0),0);$("feeTotal").textContent=`${feeStudents.length} students · Collected ₹${feeAmount.toLocaleString("en-IN")} / ₹${feeExpected.toLocaleString("en-IN")}`;$("feeList").innerHTML=feeStudents.map(s=>{const avatar=s.studentPhotoDataUrl?`<img class="student-avatar" src="${escapeHTML(s.studentPhotoDataUrl)}" alt="${escapeHTML(s.name)} photo">`:`<div class="student-avatar student-avatar-fallback">${escapeHTML(String(s.name||"S").trim().split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase())}</div>`;return `<div class="item"><div class="row"><div style="display:flex;align-items:center;gap:12px;min-width:0">${avatar}<div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span><div class="muted">₹${Number(s.fee||0).toLocaleString("en-IN")}</div></div></div><span class="pill ${payments[paidKey(s.id)]?"paid":""}">${payments[paidKey(s.id)]?"Paid":"Unpaid"}</span></div><div class="actions"><button class="secondary" onclick="togglePaid('${s.id}')">Mark ${payments[paidKey(s.id)]?"unpaid":"paid"}</button>${!payments[paidKey(s.id)]?`<button onclick="reminder('${s.id}')">WhatsApp reminder ↗</button>`:""}</div></div>`}).join("")||'<div class="empty">No students in this class.</div>';
+$("attList").innerHTML=filteredFor("attendance").map(s=>{const k=$("attDate").value+"_"+s.id,status=attendance[k]||"Not marked",avatar=s.studentPhotoDataUrl?`<img class="student-avatar" src="${escapeHTML(s.studentPhotoDataUrl)}" alt="${escapeHTML(s.name)} photo">`:`<div class="student-avatar student-avatar-fallback">${escapeHTML(String(s.name||"S").trim().split(/\s+/).slice(0,2).map(x=>x[0]||"").join("").toUpperCase())}</div>`;return `<div class="item"><div class="row"><div style="display:flex;align-items:center;gap:12px;min-width:0">${avatar}<div><b>${escapeHTML(s.name)}</b> <span class="muted">${escapeHTML(classLabel(s))}</span></div></div><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="actions"><button class="secondary" onclick="mark('${s.id}','Present')">Present</button><button class="secondary" onclick="mark('${s.id}','Absent')">Absent</button>${status==="Absent"?`<button onclick="sendAlert('${s.id}','attendance')">Send absent alert ↗</button>`:""}</div></div>`}).join("")||'<div class="empty">No students in this class.</div>';}
+function renderTeachers(docs){const teachers=docs.filter(d=>d.id!==OWNER_UID);$("teacherList").innerHTML=teachers.map(d=>{const u=d.data(),status=u.status||"pending";return `<div class="item"><div class="row"><b>${escapeHTML(u.email||d.id)}</b><span class="pill ${escapeHTML(status)}">${escapeHTML(status)}</span></div><div class="tiny">Name: ${escapeHTML(u.fullName||"Not added")} · Mobile: ${escapeHTML(u.mobile||"Not added")} · Tuition: ${escapeHTML(u.tuitionName||"Not added")}</div><div class="actions" style="margin-top:9px"><button class="success" onclick="setAccess('${d.id}','approved')">Approve / Restore</button><button class="secondary" onclick="setAccess('${d.id}','denied')">Deny</button><button class="danger" onclick="setAccess('${d.id}','revoked')">Revoke</button><button class="danger" onclick="deleteRequest('${d.id}')">Delete request</button></div></div>`}).join("")||'<div class="empty">No teacher requests yet.</div>'}
+async function setAccess(uid,status){if(user?.uid!==OWNER_UID)return;if(!confirm((status==="approved"?"Approve":status==="denied"?"Deny":"Revoke")+" this teacher?"))return;try{await db.collection("users").doc(uid).update({status})}catch(e){err(e)}}
+async function deleteRequest(uid){if(user?.uid!==OWNER_UID)return;if(!confirm("Delete this teacher request from the list? This does NOT delete their Firebase Authentication account or saved data. They will lose approval access, but cannot request again with the same email unless their Auth account is separately removed."))return;try{await db.collection("users").doc(uid).delete()}catch(e){err(e)}}
+const now=new Date();$("feeMonth").value=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0");$("attDate").value=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");
+if(firebaseConfig.apiKey==="REPLACE_ME"||OWNER_UID==="REPLACE_WITH_OWNER_UID"||typeof firebase==="undefined"){screen("setup")}else{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();auth.onAuthStateChanged(u=>{clearListeners();profile=null;students=[];payments={};attendance={};if(u&&u.isAnonymous){user=null;portalSessionUser=u;let saved="";try{saved=localStorage.getItem("smartTutionPortalUid")||"";}catch(e){}if(saved&&/^HDA-[A-Z0-9]{20,32}$/i.test(saved)){activePortalUid=saved;portalMode=true;screen("studentPortal");$("portalNumberLabel").textContent="UID: "+saved;startPortalLoad(saved);}else{portalMode=false;screen("auth");setLoginMode("student");}return;}user=u;if(u){portalMode=false;activePortalUid="";try{localStorage.removeItem("smartTutionPortalUid");}catch(e){}refreshAccount()}else{let savedPortalUid="";try{savedPortalUid=localStorage.getItem("smartTutionPortalUid")||"";}catch(e){}if(savedPortalUid&&/^HDA-[A-Z0-9]{20,32}$/i.test(savedPortalUid)){activePortalUid=savedPortalUid;portalMode=true;screen("studentPortal");$("portalNumberLabel").textContent="UID: "+savedPortalUid;$("portalLoadStatus").textContent="Restoring your portal session…";auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(()=>auth.signInAnonymously()).then(()=>{if(activePortalUid===savedPortalUid)startPortalLoad(savedPortalUid);}).catch(e=>showPortalLoadError(e));}else{portalMode=false;screen("auth");setLoginMode("teacher");$("brand").textContent="Smart Tution"}}})}
+</script>
+<script>
+/* Integrated Smart Tution feature add-on */
+/* Smart Tution Premium Dark – feature add-on
+   Paste this script immediately BEFORE </body> in the existing app.
+   It reuses the existing Firebase auth/db, teacherData/{uid} paths,
+   students, payments and attendance records. */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const style = document.createElement('style');
+  style.textContent = `
+    .nav{overflow-x:auto;justify-content:flex-start}.nav button{flex:0 0 76px}.feature-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:14px}
+    .feature-day{min-height:66px;border:1px solid var(--line);border-radius:10px;background:#101a30;padding:6px 3px;text-align:center;color:var(--ink);font-size:12px;cursor:pointer}
+    .feature-day small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+    .feature-day.today{border-color:var(--violet)}.feature-day.has-record{background:#20264a}
+    .feature-day.empty-day{visibility:hidden}.feature-kpi{background:#101a30;border:1px solid var(--line);border-radius:13px;padding:12px}
+    .feature-kpi span{display:block;color:var(--muted);font-size:11px}.feature-kpi b{display:block;font-size:20px;margin-top:5px}
+    .feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+    .feature-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+    .feature-actions button{padding:9px 11px}
+    .feature-note{font-size:12px;color:var(--muted);line-height:1.5}
+    .student-row-open{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;background:transparent;border:0;color:inherit;padding:4px 2px;cursor:pointer}
+    .student-row-main{display:flex;align-items:center;gap:12px;min-width:0}.student-row-text{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0}.student-row-chevron{font-size:32px;line-height:1;color:var(--muted);font-weight:300;padding:0 5px}.student-row-open:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:10px}
+    @media(max-width:420px){.feature-day{min-height:57px;font-size:11px}.feature-day small{font-size:9px}}
+    @media(min-width:720px){.feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  `;
+  document.head.appendChild(style);
+
+  function addNav(id, icon, label) {
+    const nav = $('bottomNav');
+    if (!nav || nav.querySelector(`[data-tab="${id}"]`)) return;
+    const b = document.createElement('button');
+    b.dataset.tab = id;
+    b.innerHTML = `<span class="icon">${icon}</span>${label}`;
+    b.addEventListener('click', () => tab(id));
+    nav.appendChild(b);
+  }
+  function addPanel(id, html) {
+    const ws = $('workspace');
+    if (!ws || $(id)) return;
+    const section = document.createElement('section');
+    section.id = id; section.className = 'panel hide'; section.innerHTML = html;
+    const nav = $('bottomNav');
+    ws.insertBefore(section, nav || null);
+  }
+
+  addNav('calendar','▦','Calendar');
+  addNav('reports','▤','Reports');
+  addNav('exams','✎','Exams');
+  addPanel('calendar', `
+    <h2>Attendance Calendar</h2><p class="section-label">Daily attendance history from your existing attendance records.</p>
+    <div class="card"><div class="filter-row"><div><label>Month</label><input id="calendarMonth" type="month"></div><div><label>Class</label><select id="calendarClass"><option value="">All classes</option></select></div></div>
+    <div class="row"><span class="tiny">Tap a date to open its attendance list.</span><span class="pill paid">Present</span><span class="pill revoked">Absent</span></div>
+    <div class="feature-calendar" id="calendarGrid"></div><div id="calendarSummary" class="muted" style="margin-top:12px"></div></div>`);
+  addPanel('reports', `
+    <h2>Monthly Reports</h2><p class="section-label">Fee and attendance summary calculated from your existing records.</p>
+    <div class="card"><label>Report month</label><input id="reportMonth" type="month">
+    <div class="feature-grid" style="margin-top:12px">
+      <div class="feature-kpi"><span>Total students</span><b id="repStudents">0</b></div><div class="feature-kpi"><span>Expected fees</span><b id="repExpected">₹0</b></div>
+      <div class="feature-kpi"><span>Collected fees</span><b id="repCollected">₹0</b></div><div class="feature-kpi"><span>Pending fees</span><b id="repPending">₹0</b></div>
+      <div class="feature-kpi"><span>Present marks</span><b id="repPresent">0</b></div><div class="feature-kpi"><span>Absent marks</span><b id="repAbsent">0</b></div>
+      <div class="feature-kpi"><span>Attendance entries</span><b id="repMarked">0</b></div><div class="feature-kpi"><span>Collection rate</span><b id="repRate">0%</b></div>
+    </div><div class="bar" style="margin-top:16px"><div id="repProgress"></div></div>
+    <p class="feature-note">Fee totals use the paid/unpaid status saved for the selected month. Attendance totals count saved daily marks, not unique students.</p>
+    <button class="secondary" onclick="window.print()">Print / Save report as PDF</button></div>`);
+  addPanel('exams', `
+    <h2>Exams & Results</h2><p class="section-label">Create exam records and track each student's marks.</p>
+    <div class="card"><h3 id="examFormTitle">Add exam result</h3><input id="examEditId" type="hidden">
+      <label>Student *</label><select id="examStudent"><option value="">Select student</option></select>
+      <label>Exam name *</label><input id="examName" maxlength="80" placeholder="e.g. Unit Test 1">
+      <div class="filter-row"><div><label>Exam date</label><input id="examDate" type="date"></div><div><label>Total marks *</label><input id="examTotal" type="number" min="1" step="0.5"></div></div>
+      <label>Obtained marks *</label><input id="examObtained" type="number" min="0" step="0.5">
+      <div class="feature-actions"><button onclick="saveExamResult()">Save result</button><button class="secondary" onclick="resetExamForm()">Clear</button></div>
+    </div><div class="card"><div class="filter-row"><div><label>Filter by student</label><select id="examFilterStudent" onchange="renderExamResults()"><option value="">All students</option></select></div><div><label>Search exam</label><input id="examSearch" oninput="renderExamResults()" placeholder="Exam name"></div></div><div id="examResultsList"></div></div>`);
+
+  // Compress optional student photos in-browser and store a small data URL in that student's existing Firestore document.
+  function showStudentPhotoPreview(src) {
+    const wrap=$('studentPhotoPreviewWrap'),img=$('studentPhotoPreview');
+    if(!wrap||!img)return;
+    if(src){img.src=src;wrap.classList.remove('hide');wrap.style.display='flex';}
+    else {img.removeAttribute('src');wrap.classList.add('hide');}
+  }
+  function compressStudentPhoto(file) {
+    return new Promise((resolve,reject)=>{
+      if(!file || !/^image\/(png|jpeg|webp)$/.test(file.type)) return reject(new Error('Choose a PNG, JPG or WEBP image.'));
+      if(file.size>5*1024*1024) return reject(new Error('Photo must be smaller than 5 MB.'));
+      const reader=new FileReader();
+      reader.onerror=()=>reject(new Error('Could not read the selected photo.'));
+      reader.onload=()=>{
+        const img=new Image();img.onerror=()=>reject(new Error('This image could not be opened.'));
+        img.onload=()=>{
+          const canvas=document.createElement('canvas'),max=320,scale=Math.min(1,max/Math.max(img.width,img.height));
+          canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));
+          const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+          let quality=.78,data=canvas.toDataURL('image/jpeg',quality);
+          while(data.length>180000 && quality>.35){quality-=.08;data=canvas.toDataURL('image/jpeg',quality);}
+          if(data.length>220000)return reject(new Error('Photo could not be compressed enough. Please choose a smaller image.'));
+          resolve(data);
+        };img.src=reader.result;
+      };reader.readAsDataURL(file);
+    });
+  }
+  document.addEventListener('change',e=>{if(e.target?.id==='studentPhotoFile'){const f=e.target.files?.[0];if(!f){showStudentPhotoPreview('');return;}if(f.size>5*1024*1024){alert('Photo must be smaller than 5 MB.');e.target.value='';return;}const r=new FileReader();r.onload=()=>showStudentPhotoPreview(r.result);r.readAsDataURL(f);}});
+
+  // Add optional profile fields to the existing student form and preserve them on edit/save.
+  const form = $('studentForm');
+  if (form && !$('studentParentName')) {
+    const extra = document.createElement('div');
+    extra.id = 'studentExtraFields';
+    extra.innerHTML = `<hr style="border-color:var(--line);margin:18px 0"><h3>Student profile details</h3>
+      <label>Parent / Guardian name</label><input id="studentParentName" maxlength="100" placeholder="Parent name">
+      <label>Address</label><textarea id="studentAddress" rows="2" maxlength="300" placeholder="Student address"></textarea>
+      <label>Date of birth</label><input id="studentDob" type="date">
+      <label>Additional notes</label><textarea id="studentNotes" rows="2" maxlength="500" placeholder="Any useful student information"></textarea>
+      <label>Student profile photo (optional)</label><input id="studentPhotoFile" type="file" accept="image/png,image/jpeg,image/webp">
+      <div id="studentPhotoPreviewWrap" class="hide" style="display:flex;align-items:center;gap:12px;margin:4px 0 12px"><img id="studentPhotoPreview" class="student-avatar" alt="Student photo preview"><span class="tiny">Photo preview</span></div>
+      <label style="display:flex;align-items:center;gap:8px;margin:8px 0"><input id="removeStudentPhoto" type="checkbox" style="width:auto;margin:0"> Remove existing photo</label>
+      <p class="tiny">Photos are compressed before saving. Use a clear image; maximum original size 5 MB.</p>`;
+    const actions = form.querySelector('.actions');
+    form.insertBefore(extra, actions || null);
+  }
+
+  // Dedicated profile browser; the existing student documents are extended in place.
+  addPanel('profiles', `<h2>Student Profiles</h2><p class="section-label">View and update each student's details.</p>
+    <div class="card"><label>Select student</label><select id="profileStudent" onchange="renderStudentProfile()"><option value="">Select student</option></select><div id="profileDetails" class="muted">Choose a student to view their profile.</div></div>`);
+  addNav('profiles','♙','Profiles');
+
+  const originalTab = window.tab;
+  window.tab = function (id) {
+    if (typeof originalTab === 'function') originalTab(id);
+    if (['calendar','reports','exams','profiles'].includes(id)) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.toggle('hide', p.id !== id));
+      document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+      if (id === 'calendar') renderAttendanceCalendar();
+      if (id === 'reports') renderMonthlyReport();
+      if (id === 'exams') { populateExamStudents(); renderExamResults(); }
+      if (id === 'profiles') { populateProfileStudents(); renderStudentProfile(); }
+    }
+  };
+
+  const originalEditStudent = window.editStudent;
+  window.editStudent = function (id) {
+    if (typeof originalEditStudent === 'function') originalEditStudent(id);
+    const s = (students || []).find(x => x.id === id);
+    if (s) {
+      if ($('studentParentName')) $('studentParentName').value = s.parentName || '';
+      if ($('studentAddress')) $('studentAddress').value = s.address || '';
+      if ($('studentDob')) $('studentDob').value = s.dob || '';
+      if ($('studentNotes')) $('studentNotes').value = s.notes || '';
+      if ($('studentPhotoFile')) $('studentPhotoFile').value = '';
+      if ($('removeStudentPhoto')) $('removeStudentPhoto').checked = false;
+      showStudentPhotoPreview(s.studentPhotoDataUrl || '');
+    }
+  };
+  const originalToggleForm = window.toggleForm;
+  window.toggleForm = function (open) {
+    if (typeof originalToggleForm === 'function') originalToggleForm(open);
+    if (open) { ['studentParentName','studentAddress','studentDob','studentNotes'].forEach(id => { if ($(id)) $(id).value = ''; }); if ($('studentPhotoFile')) $('studentPhotoFile').value=''; if ($('removeStudentPhoto')) $('removeStudentPhoto').checked=false; showStudentPhotoPreview(''); }
+  };
+  window.shareStudentPortalUid = function (studentId) {
+    try {
+      const s = studentId ? (students || []).find(x => x.id === studentId) : null;
+      const name = s ? (s.name || 'Student') : ($('studentName')?.value.trim() || 'Student');
+      const phone = s ? (s.phone || '') : ($('studentPhone')?.value.trim() || '');
+      const uid = s ? (s.portalUid || '') : ($('studentPortalUid')?.value.trim() || '');
+      if (!uid) throw Error('Save the student first to generate a UID.');
+      const digits = String(phone).replace(/\D/g, '');
+      const whatsappNumber = digits.length === 10 ? '91' + digits : (digits.startsWith('91') && digits.length === 12 ? digits : '');
+      if (!whatsappNumber) throw Error('Enter a valid 10-digit WhatsApp number.');
+      const message = `Hemdeep Academy Student / Parent Portal\n\nStudent: ${name}\nYour Portal UID: ${uid}\n\nTo open the portal, select Student Portal in the app and enter this UID.`;
+      const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+      window.open(url, '_blank', 'noopener');
+    } catch (e) { err(e); }
+  };
+
+  window.saveStudent = async function () {
+    try {
+      const name = $('studentName').value.trim(), className = $('studentClass').value.trim(), fee = Number($('studentFee').value);
+      if (!name || !className || $('studentFee').value === '' || !Number.isFinite(fee) || fee < 0) throw Error('Enter a student name, class and valid fee');
+      const id = $('studentId').value;
+      const ref = id ? studentRef(id) : db.collection('teacherData').doc(user.uid).collection('students').doc();
+      const phone = $('studentPhone').value.trim();
+      const portalAccess = $('studentAccessEnabled').checked;
+      if (portalAccess && !/^\+?91?[- ]?\d{10}$|^\d{10}$/.test(phone.replace(/\s/g, ''))) throw Error('Enter a valid 10-digit mobile number to enable portal access.');
+      const extra = { parentName: $('studentParentName')?.value.trim() || '', address: $('studentAddress')?.value.trim() || '', dob: $('studentDob')?.value || '', notes: $('studentNotes')?.value.trim() || '' };
+      const photoInput=$('studentPhotoFile'), removePhoto=$('removeStudentPhoto');
+      if (removePhoto?.checked) extra.studentPhotoDataUrl = firebase.firestore.FieldValue.delete();
+      else if (photoInput?.files?.[0]) extra.studentPhotoDataUrl = await compressStudentPhoto(photoInput.files[0]);
+      const accessCollection = db.collection('teacherData').doc(user.uid).collection('studentAccess');
+      const accessRef = accessCollection.doc(ref.id);
+      const normalizedPhone = normalizeStudentPhone(phone) || '';
+      let portalUid = '';
+      let sameNumber = {docs:[]}, currentDoc = {exists:false,data:()=>({})};
+      if (portalAccess) {
+        // Reuse one UID for all sibling records using the same normalized parent number.
+        sameNumber = await accessCollection.where('phone', '==', normalizedPhone).limit(20).get();
+        const existing = sameNumber.docs.find(d => d.id !== ref.id && d.data().portalUid);
+        currentDoc = await accessRef.get();
+        portalUid = existing?.data()?.portalUid || currentDoc.data()?.portalUid ||
+          ('HDA-' + (window.crypto?.randomUUID ? crypto.randomUUID().replace(/-/g,'').slice(0,24).toUpperCase() : (Date.now().toString(36)+Math.random().toString(36).slice(2,18)).toUpperCase()));
+      } else { currentDoc = await accessRef.get(); }
+      const batch = db.batch();
+      batch.set(ref, { name, className, phone, fee, portalAccess, portalUid: portalAccess ? portalUid : '', ...extra }, { merge: true });
+      batch.set(accessRef, { phone: normalizedPhone, active: portalAccess, studentId: ref.id, studentName: name, portalUid: portalAccess ? portalUid : '', updatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+      // Keep one shared token for siblings using the same parent number; only linked IDs are readable.
+      const siblingDocs = portalAccess ? sameNumber.docs.filter(d => d.data().active && d.id !== ref.id && d.data().portalUid === portalUid) : [];
+      const linkedIds = portalAccess ? [...new Set([...siblingDocs.map(d => d.id), ref.id])] : [];
+      if (!portalAccess && currentDoc?.exists && currentDoc.data()?.portalUid) {
+        const oldUid=currentDoc.data().portalUid;
+        const remaining=(await accessCollection.where('portalUid','==',oldUid).get()).docs.filter(d=>d.id!==ref.id && d.data().active).map(d=>d.id);
+        const tokenRef=db.collection('studentPortalTokens').doc(oldUid);
+        batch.set(tokenRef,{teacherUid:user.uid,studentIds:remaining,active:remaining.length>0,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      } else if (portalAccess) {
+        batch.set(db.collection('studentPortalTokens').doc(portalUid),{teacherUid:user.uid,studentIds:linkedIds,active:true,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+      }
+      await batch.commit();
+      if ($('studentPortalUid')) $('studentPortalUid').value = portalAccess ? portalUid : '';
+      if ($('shareStudentUidButton')) $('shareStudentUidButton').disabled = !(portalAccess && portalUid && phone);
+      toggleForm(false);
+      if (typeof window.tab === 'function') window.tab('students');
+      if (typeof window.render === 'function') window.render();
+    } catch (e) { err(e); }
+  };
+
+  function currentMonthValue() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; }
+  function safeText(v) { return escapeHTML(v == null ? '' : v); }
+  function inMonth(date, ym) { return typeof date === 'string' && date.slice(0,7) === ym; }
+  function money(n) { return '₹' + Number(n || 0).toLocaleString('en-IN'); }
+  function getAttendanceForDate(date, className) {
+    const arr = (students || []).filter(s => !className || classLabel(s) === className);
+    return { present: arr.filter(s => attendance[date+'_'+s.id] === 'Present').length,
+      absent: arr.filter(s => attendance[date+'_'+s.id] === 'Absent').length };
+  }
+  function refreshCalendarClass() {
+    const el = $('calendarClass'); if (!el) return;
+    const old = el.value, classes = [...new Set((students||[]).map(classLabel))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+    el.innerHTML = '<option value="">All classes</option>' + classes.map(c=>`<option value="${safeText(c)}">${safeText(c)}</option>`).join('');
+    if (classes.includes(old)) el.value = old;
+  }
+  window.renderAttendanceCalendar = function () {
+    if (!$('calendarGrid')) return;
+    const ym = $('calendarMonth').value || currentMonthValue(); $('calendarMonth').value = ym;
+    refreshCalendarClass();
+    const [y,m] = ym.split('-').map(Number), first = new Date(y,m-1,1), days = new Date(y,m,0).getDate(), offset = (first.getDay()+6)%7, cls = $('calendarClass').value;
+    const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    let html = labels.map(x=>`<div class="tiny" style="text-align:center">${x}</div>`).join('');
+    for(let i=0;i<offset;i++) html += '<div class="feature-day empty-day"></div>';
+    let markedDays=0, present=0, absent=0;
+    for(let day=1;day<=days;day++) {
+      const date = `${ym}-${String(day).padStart(2,'0')}`, stats = getAttendanceForDate(date,cls), marked=stats.present+stats.absent;
+      if(marked){markedDays++;present+=stats.present;absent+=stats.absent;}
+      const today = new Date().toISOString().slice(0,10)===date;
+      html += `<button type="button" class="feature-day ${marked?'has-record':''} ${today?'today':''}" onclick="openCalendarDate('${date}')"><b>${day}</b><small>${marked?`${stats.present}P · ${stats.absent}A`:'—'}</small></button>`;
+    }
+    $('calendarGrid').innerHTML = html;
+    $('calendarSummary').textContent = `${markedDays} days with attendance · ${present} present marks · ${absent} absent marks`;
+  };
+  window.openCalendarDate = function(date) { $('attDate').value=date; tab('attendance'); };
+  $('calendarMonth').addEventListener('change', renderAttendanceCalendar);
+  $('calendarClass').addEventListener('change', renderAttendanceCalendar);
+
+  window.renderMonthlyReport = function () {
+    if (!$('reportMonth')) return;
+    const ym = $('reportMonth').value || currentMonthValue(); $('reportMonth').value = ym;
+    const ss = students || [], paid = ss.filter(s => payments[ym+'_'+s.id]), expected = ss.reduce((a,s)=>a+Number(s.fee||0),0), collected=paid.reduce((a,s)=>a+Number(s.fee||0),0);
+    let present=0, absent=0, marked=0;
+    Object.entries(attendance||{}).forEach(([key,status])=>{const date=key.slice(0,10);if(inMonth(date,ym)){if(status==='Present')present++;if(status==='Absent')absent++;if(status==='Present'||status==='Absent')marked++;}});
+    $('repStudents').textContent=ss.length; $('repExpected').textContent=money(expected); $('repCollected').textContent=money(collected); $('repPending').textContent=money(Math.max(0,expected-collected));
+    $('repPresent').textContent=present; $('repAbsent').textContent=absent; $('repMarked').textContent=marked;
+    const rate=expected?Math.round(collected/expected*100):0; $('repRate').textContent=rate+'%'; $('repProgress').style.width=Math.min(100,rate)+'%';
+  };
+  $('reportMonth').addEventListener('change', renderMonthlyReport);
+
+  // Fee receipt: print-ready page. The browser's print dialog can save it as PDF.
+  window.printFeeReceipt = function (studentId) {
+    const s=(students||[]).find(x=>x.id===studentId); if(!s) return;
+    const ym=$('feeMonth').value || currentMonthValue();
+    if(!payments[ym+'_'+studentId]) return alert('Mark this fee as paid before creating a receipt.');
+    const receiptNo = `ST-${ym.replace('-','')}-${String(studentId).slice(-6).toUpperCase()}`;
+    const w=window.open('','_blank'); if(!w) return alert('Please allow pop-ups to print the receipt.');
+    const tuition=settings.name||'Smart Tution', date=new Date().toLocaleDateString('en-IN');
+    w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Fee Receipt ${receiptNo}</title><style>body{font:15px Arial,sans-serif;color:#17213a;padding:28px}.receipt{max-width:650px;margin:auto;border:2px solid #667cff;border-radius:16px;padding:28px}.top{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #ddd;padding-bottom:16px}h1{margin:0 0 5px;font-size:25px}.muted{color:#667085;font-size:13px}.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}.total{font-size:21px;font-weight:bold;color:#253eaa}.foot{margin-top:35px;display:flex;justify-content:space-between}@media print{button{display:none}body{padding:0}.receipt{border:1px solid #777}}</style>
+<style id="sidebar-dashboard-theme-colors">
+#menuButton{background:linear-gradient(120deg,#315de8,#8759e9)!important;color:#fff!important;border:1px solid #315de8!important;box-shadow:0 5px 14px #315de833!important}
+#menuButton:active{filter:brightness(.95)}
+.sideNavMark{background:linear-gradient(135deg,#315de8,#8759e9)!important}
+.sideNavLinks button,.sideNavFoot button{color:#3154b5!important}
+.sideNavLinks button:first-child{background:linear-gradient(120deg,#edf1ff,#f2edff)!important;color:#315de8!important}
+.sideNavLinks button:active,.sideNavLinks button:hover,.sideNavFoot button:not(.sideNavLogout):hover{background:linear-gradient(120deg,#edf1ff,#f2edff)!important;color:#315de8!important}
+#sideNavClose{background:#edf1ff!important;color:#315de8!important;border:1px solid #dce4ff!important}
+.sideNavHead{border-bottom-color:#e0e6f7!important}.sideNavFoot{border-top-color:#e0e6f7!important}
+</style>
+<style id="portal-navigation-fixes">#menuButton.portal-hidden{display:none!important}.portal-shell{padding-bottom:22px}.portal-nav{display:flex;gap:8px;overflow-x:auto;padding:8px 2px 14px;margin:8px 0 14px;position:sticky;top:0;z-index:8;background:rgba(255,255,255,.96);border-bottom:1px solid #dfe5f4;scrollbar-width:thin}.portal-nav button{flex:0 0 auto;white-space:nowrap;padding:10px 13px;border-radius:12px;background:#edf1ff!important;color:#3451a0!important;border:1px solid #dce4ff!important;box-shadow:none!important}.portal-nav button.active{background:linear-gradient(120deg,#315de8,#7956e8)!important;color:#fff!important;border-color:#315de8!important}.portal-page{min-height:160px}.portal-page.hide{display:none!important}.portal-uid-card{margin-bottom:8px}@media(min-width:720px){.portal-nav{flex-wrap:wrap;overflow:visible}}</style></head><body><div class="receipt"><div class="top"><div><h1>${safeText(tuition)}</h1><div class="muted">OFFICIAL FEE RECEIPT</div></div><div><b>${safeText(receiptNo)}</b><div class="muted">Receipt generated: ${safeText(date)}</div></div></div><div class="row"><span>Student name</span><b>${safeText(s.name)}</b></div><div class="row"><span>Class</span><b>${safeText(s.className)}</b></div><div class="row"><span>Fee month</span><b>${safeText(ym)}</b></div><div class="row"><span>Payment status</span><b>PAID</b></div><div class="row total"><span>Amount received</span><span>${money(s.fee)}</span></div><p class="muted">Receipt generated on the date shown. Original payment date is not available in the existing payment records.</p><div class="foot"><span class="muted">Thank you for your payment.</span><span>Authorized signature __________</span></div></div><script>window.onload=()=>window.print()<\/script>
+</body></html>`);
+    w.document.close();
+  };
+  // Add receipt actions in a separate block so the existing fee list markup is untouched.
+  const feesPanel=$('fees');
+  if(feesPanel && !$('receiptActions')) {
+    const card=document.createElement('div'); card.className='card'; card.innerHTML='<h3>PDF Fee Receipts</h3><p class="feature-note">Receipts are available for students marked Paid in the selected fee month. Choose Print / Save as PDF in the print dialog.</p><div id="receiptActions"></div>';
+    feesPanel.appendChild(card);
+  }
+  function renderReceipts() {
+    if(!$('receiptActions')) return;
+    const ym=$('feeMonth').value||currentMonthValue();
+    const paidStudents=(students||[]).filter(s=>payments[ym+'_'+s.id]);
+    $('receiptActions').innerHTML=paidStudents.map(s=>`<div class="item"><div class="row"><div><b>${safeText(s.name)}</b><div class="muted">${safeText(classLabel(s))} · ${money(s.fee)}</div></div><button onclick="printFeeReceipt('${safeText(s.id)}')">Create PDF receipt</button></div></div>`).join('')||'<div class="empty">No paid fee records for this month.</div>';
+  }
+
+  // Exams are stored separately under the currently signed-in teacher.
+  let examRecords=[], examUnsub=null;
+  function examCollection(){return db.collection('teacherData').doc(user.uid).collection('exams');}
+  function subscribeExams(){if(!user||!db)return;if(examUnsub)examUnsub();examUnsub=examCollection().onSnapshot(s=>{examRecords=s.docs.map(d=>({id:d.id,...d.data()}));window.smartExamRecords=examRecords;renderExamResults();},e=>console.error('Exam records:',e));}
+  window.populateExamStudents = function(){
+    const opts=(students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(s=>`<option value="${safeText(s.id)}">${safeText(s.name)} — ${safeText(classLabel(s))}</option>`).join('');
+    ['examStudent','examFilterStudent'].forEach(id=>{const el=$(id);if(!el)return;const old=el.value;el.innerHTML=(id==='examStudent'?'<option value="">Select student</option>':'<option value="">All students</option>')+opts;if([...el.options].some(o=>o.value===old))el.value=old;});
+  };
+  window.resetExamForm = function(){['examEditId','examName','examTotal','examObtained'].forEach(id=>$(id).value='');$('examStudent').value='';$('examDate').value=new Date().toISOString().slice(0,10);$('examFormTitle').textContent='Add exam result';};
+  window.saveExamResult = async function(){
+    try{
+      if(!user||!profile||profile.status!=='approved'&&user.uid!==OWNER_UID)throw Error('Approved teacher access is required.');
+      const studentId=$('examStudent').value, s=(students||[]).find(x=>x.id===studentId), name=$('examName').value.trim(), date=$('examDate').value;
+      const total=Number($('examTotal').value), obtained=Number($('examObtained').value);
+      if(!s||!name||!date||$('examTotal').value===''||$('examObtained').value===''||!Number.isFinite(total)||total<=0||!Number.isFinite(obtained)||obtained<0||obtained>total)throw Error('Select a student and enter valid exam details. Obtained marks cannot exceed total marks.');
+      const id=$('examEditId').value, ref=id?examCollection().doc(id):examCollection().doc();
+      await ref.set({studentId,studentName:s.name,className:s.className||'',examName:name,examDate:date,totalMarks:total,obtainedMarks:obtained,percentage:Number((obtained/total*100).toFixed(2)),updatedAt:firebase.firestore.FieldValue.serverTimestamp(),...(id?{}:{createdAt:firebase.firestore.FieldValue.serverTimestamp()})},{merge:true});
+      resetExamForm();
+    }catch(e){err(e);}
+  };
+  window.editExamResult = function(id){const r=examRecords.find(x=>x.id===id);if(!r)return;populateExamStudents();$('examEditId').value=id;$('examStudent').value=r.studentId;$('examName').value=r.examName||'';$('examDate').value=r.examDate||'';$('examTotal').value=r.totalMarks;$('examObtained').value=r.obtainedMarks;$('examFormTitle').textContent='Edit exam result';$('exams').scrollIntoView({behavior:'smooth'});};
+  window.deleteExamResult = async function(id){if(!confirm('Delete this exam result?'))return;try{await examCollection().doc(id).delete();}catch(e){err(e);}};
+  window.renderExamResults = function(){
+    if(!$('examResultsList'))return;populateExamStudents();const sid=$('examFilterStudent').value,q=$('examSearch').value.trim().toLowerCase();
+    const rows=examRecords.filter(r=>(!sid||r.studentId===sid)&&(`${r.examName||''} ${r.studentName||''} ${r.className||''}`).toLowerCase().includes(q)).sort((a,b)=>String(b.examDate||'').localeCompare(String(a.examDate||'')));
+    $('examResultsList').innerHTML=rows.map(r=>`<div class="item"><div class="row"><div><b>${safeText(r.studentName)}</b> <span class="pill">${safeText(r.className)}</span><div class="muted">${safeText(r.examName)} · ${safeText(r.examDate)}</div><div class="accent">${safeText(r.obtainedMarks)} / ${safeText(r.totalMarks)} · ${safeText(r.percentage)}%</div></div><div class="feature-actions"><button class="secondary" onclick="editExamResult('${safeText(r.id)}')">Edit</button><button class="danger" onclick="deleteExamResult('${safeText(r.id)}')">Delete</button></div></div></div>`).join('')||'<div class="empty">No exam results yet.</div>';
+  };
+  $('examDate').value=new Date().toISOString().slice(0,10);
+  $('examSearch').addEventListener('input',renderExamResults);
+
+  window.populateProfileStudents=function(){const el=$('profileStudent');if(!el)return;const old=el.value;el.innerHTML='<option value="">Select student</option>'+(students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(s=>`<option value="${safeText(s.id)}">${safeText(s.name)} — ${safeText(classLabel(s))}</option>`).join('');if([...el.options].some(o=>o.value===old))el.value=old;};
+  window.renderStudentProfile=function(){
+    const id=$('profileStudent').value,s=(students||[]).find(x=>x.id===id);if(!s){$('profileDetails').textContent='Choose a student to view their profile.';return;}
+    const paid=payments[month()+'_'+s.id], present=Object.entries(attendance||{}).filter(([k,v])=>k.endsWith('_'+s.id)&&v==='Present').length, absent=Object.entries(attendance||{}).filter(([k,v])=>k.endsWith('_'+s.id)&&v==='Absent').length;
+    $('profileDetails').innerHTML=`<div class="item" style="display:flex;align-items:center;gap:12px">${s.studentPhotoDataUrl?`<img class=\"student-avatar\" src=\"${safeText(s.studentPhotoDataUrl)}\" alt=\"Student photo\">`:`<div class=\"student-avatar student-avatar-fallback\">${safeText(String(s.name||'S').trim().split(/\\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase())}</div>`}<div><b>${safeText(s.name)}</b><br><span class="pill">${safeText(classLabel(s))}</span></div></div><div class="item">Parent / Guardian: <b>${safeText(s.parentName||'Not added')}</b></div><div class="item">WhatsApp: <b>${safeText(s.phone||'Not added')}</b></div><div class="item">Address: <b>${safeText(s.address||'Not added')}</b></div><div class="item">Date of birth: <b>${safeText(s.dob||'Not added')}</b></div><div class="item">Monthly fee: <b>${money(s.fee)}</b> · Current month: <span class="pill ${paid?'paid':''}">${paid?'Paid':'Unpaid'}</span></div><div class="item">Attendance records: <b>${present} present · ${absent} absent</b></div><div class="item">Notes: ${safeText(s.notes||'None')}</div><div class="feature-actions"><button onclick="tab('students');editStudent('${safeText(s.id)}')">Edit profile</button><button class="secondary" onclick="printFeeReceipt('${safeText(s.id)}')">Fee receipt</button></div>`;
+  };
+
+  // Extend the existing render without replacing its original dashboard/student/fee logic.
+  const oldRender=window.render;
+  window.render=function(){if(typeof oldRender==='function')oldRender();renderReceipts();if($('calendar')&&!$('calendar').classList.contains('hide'))renderAttendanceCalendar();if($('reports')&&!$('reports').classList.contains('hide'))renderMonthlyReport();if($('exams')&&!$('exams').classList.contains('hide')){populateExamStudents();renderExamResults();}if($('profiles')&&!$('profiles').classList.contains('hide')){populateProfileStudents();renderStudentProfile();}};
+  const oldStartWorkspace=window.startWorkspace;
+  window.startWorkspace=function(){if(typeof oldStartWorkspace==='function')oldStartWorkspace();subscribeExams();};
+  const oldClearListeners=window.clearListeners;
+  window.clearListeners=function(){if(examUnsub){examUnsub();examUnsub=null;}if(typeof oldClearListeners==='function')oldClearListeners();};
+  // Calendar/report month selectors and receipt list follow the existing fee month.
+  if($('calendarMonth'))$('calendarMonth').value=currentMonthValue();
+  if($('reportMonth'))$('reportMonth').value=currentMonthValue();
+})();
+
+</script>
+
+
+<style id="smart-light-premium">
+:root{color-scheme:light;--bg:#f3f6ff;--surface:#fff;--surface2:#f7f8ff;--ink:#182746;--muted:#687895;--line:#e1e7f4;--blue:#315de8;--violet:#7956e8;--green:#159b75;--red:#d94d70}
+body{background:radial-gradient(ellipse at 100% 0%,#e5eaff 0,transparent 42%),linear-gradient(145deg,#f7f9ff,#eef2ff);color:var(--ink);padding-bottom:100px}
+header{background:linear-gradient(115deg,#fff,#edf0ff 70%,#f2eaff);border-bottom:1px solid #e1e6fa;box-shadow:0 8px 26px #344b8510}
+header small{color:#637394}header h1{color:#17284b}header #who{color:#637394}
+.card,.class-section{background:linear-gradient(145deg,#fff,#f9faff);border:1px solid #e4e9f5;box-shadow:0 9px 25px #344b8510;color:var(--ink)}
+.muted,.tiny,.section-label,.stat span,.feature-note{color:#687895}
+input,textarea,select{background:#fff;color:#182746;border-color:#d9e1f0}
+input::placeholder{color:#9aa7bc}label{color:#334565}
+button{background:linear-gradient(120deg,#315de8,#7956e8);border:0;box-shadow:0 4px 10px #4a61c51c}
+button.secondary{background:#edf1ff;color:#3451a0;border:1px solid #dce4ff;box-shadow:none}
+button.danger{background:#fff0f3;color:#b33c5c;border:1px solid #f6d5df;box-shadow:none}
+button.success{background:#e8faf3;color:#167653;border:1px solid #c8efdf;box-shadow:none}
+.nav{background:#ffffffed;border-top:1px solid #e0e6f2;box-shadow:0 -7px 24px #344b8515;backdrop-filter:blur(18px)}
+.nav button{color:#71809c}.nav button.active{background:#edf1ff;color:#315de8}
+.nav button.add-student{flex:0 0 58px;max-width:58px;min-width:58px;height:58px;margin-top:-22px;border-radius:18px;background:linear-gradient(145deg,#315de8,#8759e9);color:#fff;box-shadow:0 8px 20px #5267c54a;font-size:25px}
+.nav button.add-student .icon{font-size:25px}
+.pill{background:#fff4df;color:#94651a}.pill.paid,.pill.approved,.pill.Present{background:#e4f8ef;color:#167653}.pill.revoked,.pill.denied,.pill.Absent{background:#fff0f3;color:#b33c5c}
+.bar,.chart-track{background:#e8edf7}.chart-track>div,.bar>div{background:linear-gradient(90deg,#315de8,#9870ec)}
+.notice{background:#fff8e9;color:#805d20;border-color:#f1e2bf}
+.queue{background:#f6f7ff;border-color:#dfe4fa}
+#menuButton{background:#fff;color:#315de8;border:1px solid #dfe5f4;box-shadow:0 4px 12px #344b8510;font-size:21px;padding:9px 13px}
+#moreMenu{position:absolute;right:14px;top:78px;z-index:150;width:min(250px,calc(100vw - 28px));padding:9px;background:#fff;border:1px solid #e1e7f4;border-radius:17px;box-shadow:0 16px 40px #26395b26}
+#moreMenu button{display:flex;width:100%;justify-content:flex-start;margin:3px 0;background:transparent;color:#263957;box-shadow:none;border:0;padding:12px;border-radius:10px}
+#moreMenu button:hover{background:#f0f3ff}
+#moreMenu .menu-logout{color:#b33c5c}
+@media(min-width:720px){.nav{max-width:1000px;background:#ffffffed}.nav button.add-student{margin-top:-22px}}
+</style>
+<script id="smart-light-navigation">
+(function(){
+ 'use strict';
+ const $=id=>document.getElementById(id);
+ const header=document.querySelector('header .inner');
+ if(header && !$('menuButton')){
+   const b=document.createElement('button');
+   b.id='menuButton';b.type='button';b.textContent='☰';
+   b.setAttribute('aria-label','Open navigation menu');
+   b.setAttribute('aria-expanded','false');
+   header.insertBefore(b,header.firstChild);
+ }
+ const portalNav=$('portalBottomNav');if(portalNav&&!portalNav.dataset.bound){portalNav.dataset.bound='1';portalNav.addEventListener('click',e=>{const b=e.target.closest('[data-portal-tab]');if(b)showPortalTab(b.dataset.portalTab);});}
+ if(!$('sideNavOverlay')){
+   const overlay=document.createElement('div');
+   overlay.id='sideNavOverlay';
+   overlay.innerHTML='<aside id="sideNavDrawer" aria-label="Main navigation"><div class="sideNavHead"><div class="sideNavBrand"><span class="sideNavMark">✦</span><div><strong>Smart Tution</strong><small>Manage your tuition</small></div></div><button type="button" id="sideNavClose" aria-label="Close menu">×</button></div><nav class="sideNavLinks"><button data-go="dashboard">⌂ <span>Overview</span></button><button data-go="students">♙ <span>Students</span></button><button data-go="fees">₹ <span>Fees & Fee History</span></button><button data-go="attendance">✓ <span>Attendance</span></button><button data-go="exams">✎ <span>Exam Results</span></button><button data-go="calendar">▦ <span>Attendance Calendar</span></button><button data-go="profiles">▣ <span>Student Profiles</span></button><button data-go="reports">▤ <span>Reports</span></button><button data-go="settings">⚙ <span>Settings</span></button><button data-go="owner" id="sideMenuOwner">♛ <span>Owner Panel</span></button></nav><div class="sideNavFoot"><button class="sideNavLogout" data-go="logout">↪ <span>Log out</span></button></div></aside>';
+   document.body.appendChild(overlay);
+   const open=()=>{overlay.classList.add('open');$('menuButton')?.setAttribute('aria-expanded','true');document.body.classList.add('sideNavOpen');};
+   const close=()=>{overlay.classList.remove('open');$('menuButton')?.setAttribute('aria-expanded','false');document.body.classList.remove('sideNavOpen');};
+   $('menuButton')?.addEventListener('click',open);
+   $('sideNavClose')?.addEventListener('click',close);
+   overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+   overlay.addEventListener('click',e=>{
+     const item=e.target.closest('[data-go]');if(!item)return;
+     const id=item.dataset.go;close();
+     if(id==='logout'){if(typeof signOutUser==='function')signOutUser();return;}
+     if(typeof window.tab==='function')window.tab(id);
+   });
+   document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+ }
+ function setupNav(){
+   const nav=$('bottomNav');if(!nav)return;
+   const specs=[['dashboard','⌂','Home'],['students','♙','Students'],['add','＋','Add Student'],['attendance','✓','Attendance'],['fees','₹','Fees']];
+   nav.innerHTML='';
+   specs.forEach(([id,icon,label])=>{
+     const b=document.createElement('button');b.type='button';b.dataset.tab=id;b.innerHTML='<span class="icon">'+icon+'</span>'+(id==='add'?'':label);
+     if(id==='add'){b.className='add-student';b.setAttribute('aria-label','Add student');b.title='Add student';b.dataset.tab='addStudentPanel';b.addEventListener('click',()=>{if(typeof window.tab==='function')window.tab('addStudentPanel');if(typeof window.toggleForm==='function')window.toggleForm(true);else if(typeof toggleForm==='function')toggleForm(true);});}
+     else b.addEventListener('click',()=>{if(typeof window.tab==='function')window.tab(id);});
+     if(id==='dashboard')b.classList.add('active');nav.appendChild(b);
+   });
+ }
+ setupNav();
+ // The raised centre + is its own Add Student section, separate from Students.
+ const ws=$('workspace'), studentsPanel=$('students'), studentForm=$('studentForm');
+ if(ws && studentsPanel && studentForm && !$('addStudentPanel')){
+   const addPanel=document.createElement('section'); addPanel.id='addStudentPanel'; addPanel.className='panel hide';
+   addPanel.innerHTML='<h2>Add Student</h2><p class="muted">Enter student details below. Saved students will appear in the Students section.</p>';
+   ws.insertBefore(addPanel, studentsPanel.nextSibling);
+   addPanel.appendChild(studentForm);
+ }
+ const originalTab=window.tab;
+ window.tab=function(id){if(typeof originalTab==='function')originalTab(id);const nav=$('bottomNav');if(nav){nav.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id || (id==='addStudentPanel' && b.classList.contains('add-student'))));}};
+ const oldStart=window.startWorkspace;
+ window.startWorkspace=function(){if(typeof oldStart==='function')oldStart();setupNav();const owner=$('sideMenuOwner');if(owner)owner.classList.toggle('hide',!(typeof user!=='undefined' && user && user.uid===OWNER_UID));};
+})();
+</script>
+
+<style id="smart-deeper-theme">
+:root{--bg:#e7ebfb;--surface:#fff;--surface2:#eef1ff;--ink:#14234a;--muted:#58698f;--line:#cbd4f2;--blue:#244bd2;--violet:#6340c9;--green:#087e65;--red:#bf365c}
+body{background:radial-gradient(ellipse at 8% 0%,#d4ddff 0,transparent 42%),linear-gradient(145deg,#e9edff,#dfe5fb)!important;color:#14234a}
+header{background:linear-gradient(110deg,#fff 0%,#e0e7ff 60%,#e7dcff 100%)!important;border-bottom:1px solid #cbd4f2!important}
+.card,.class-section{background:linear-gradient(145deg,#fff,#f0f2ff)!important;border:1px solid #d4dcf5!important;box-shadow:0 10px 26px #263c8618!important}
+button{background:linear-gradient(120deg,#244bd2,#6340c9)!important;color:#fff!important}
+button.secondary{background:#e2e8ff!important;color:#253f9a!important;border:1px solid #c6d2ff!important}
+input,select,textarea{background:#f9faff!important;border-color:#cbd5f1!important;color:#17264d!important}
+#premiumQuickActions .quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#premiumQuickActions .quick-tile{min-height:145px;border-radius:20px;padding:18px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;box-shadow:0 8px 20px #263c8618!important;white-space:normal}
+#premiumQuickActions .quick-tile .qicon{font-size:30px;line-height:1.2}
+#premiumQuickActions .quick-tile b{font-size:18px}
+#premiumQuickActions .quick-tile small{font-size:13px;opacity:.86}
+#premiumQuickActions .q1{background:linear-gradient(145deg,#244bd2,#4568ed)!important}#premiumQuickActions .q2{background:linear-gradient(145deg,#5432b7,#8060e8)!important}#premiumQuickActions .q3{background:linear-gradient(145deg,#087e9f,#26a7c4)!important}#premiumQuickActions .q4{background:linear-gradient(145deg,#6339b9,#9463dd)!important}#premiumQuickActions .q5{background:linear-gradient(145deg,#087d65,#20a486)!important}#premiumQuickActions .q6{background:linear-gradient(145deg,#b66a25,#df944b)!important}
+.smart-search{margin:10px 0 14px}.smart-search input{width:100%;padding:13px 15px;border-radius:13px}.smart-report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.smart-report-grid .feature-kpi{background:#e9edff;border:1px solid #d1daf8;border-radius:14px;padding:14px}.smart-table-row{display:flex;justify-content:space-between;gap:10px;padding:12px 2px;border-bottom:1px solid #dce3f6}.smart-status{font-weight:700;color:#244bd2}
+@media(min-width:700px){#premiumQuickActions .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.smart-report-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+
+<style id="restore-original-nav-button-colors">
+button{background:linear-gradient(120deg,#315de8,#8759e9)!important;color:#fff!important}
+button.secondary{background:#edf1ff!important;color:#3451a0!important;border:1px solid #dce4ff!important;box-shadow:none!important}
+button.danger{background:#fff0f3!important;color:#b33c5c!important;border:1px solid #f6d5df!important;box-shadow:none!important}
+button.success{background:#e8faf3!important;color:#167653!important;border:1px solid #c8efdf!important;box-shadow:none!important}
+.nav{background:#ffffffed!important;border-top:1px solid #e0e6f2!important;box-shadow:0 -7px 24px #344b8515!important;backdrop-filter:blur(18px)}
+.nav button{background:transparent!important;color:#71809c!important;box-shadow:none!important}
+.nav button.active{background:#edf1ff!important;color:#315de8!important}
+.nav button.add-student{background:linear-gradient(145deg,#315de8,#8759e9)!important;color:#fff!important}
+</style>
+<script id="smart-complete-enhancements">
+(function(){'use strict';
+ const $=id=>document.getElementById(id);let detailPayments={},detailUnsub=null;const getStudents=()=>Array.isArray(students)?students:[];
+ const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+ const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const monthNow=()=>new Date().toISOString().slice(0,7);
+ function monthValue(){return $('feeMonth')?.value||monthNow()}
+ function mountSearch(id,placeholder,selector){const panel=$(id);if(!panel||panel.querySelector('.smart-search'))return;const wrap=document.createElement('div');wrap.className='smart-search';wrap.innerHTML='<input type="search" aria-label="Search" placeholder="'+placeholder+'">';const target=panel.querySelector('.card')||panel;target.insertBefore(wrap,target.firstChild);wrap.querySelector('input').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();panel.querySelectorAll(selector).forEach(el=>{el.style.display=el.textContent.toLowerCase().includes(q)?'':'none'});});}
+ function enhanceQuick(){const host=$('premiumQuickActions');if(!host)return;host.innerHTML='<h3>Quick Actions</h3><div class="quick-grid"><button class="quick-tile q1" id="qAdd"><span class="qicon">♙</span><b>Add Student</b><small>Add new student</small></button><button class="quick-tile q2" id="qFees"><span class="qicon">₹</span><b>Collect Fees</b><small>Mark monthly fees</small></button><button class="quick-tile q3" id="qAtt"><span class="qicon">▣</span><b>Attendance</b><small>Mark attendance</small></button><button class="quick-tile q4" id="qExam"><span class="qicon">✎</span><b>Create Exam</b><small>Add examination result</small></button><button class="quick-tile q5" id="qWA"><span class="qicon">◉</span><b>WhatsApp Reminder</b><small>Send fee reminders</small></button><button class="quick-tile q6" id="qRep"><span class="qicon">▥</span><b>View Reports</b><small>Open monthly reports</small></button></div>';
+  $('qAdd').onclick=()=>{tab('students');toggleForm(true)};$('qFees').onclick=()=>tab('fees');$('qAtt').onclick=()=>tab('attendance');$('qExam').onclick=()=>tab('exams');$('qRep').onclick=()=>tab('reports');$('qWA').onclick=()=>{tab('fees');setTimeout(()=>{if(typeof showBulk==='function')showBulk('fees')},80)};
+ }
+ function attachSearches(){mountSearch('students','Search student name or class…','.class-section .item, .class-section .student-card');mountSearch('fees','Search student name or class…','.item');mountSearch('attendance','Search student name or class…','.item');mountSearch('reports','Search report rows…','.smart-table-row');mountSearch('exams','Search student, class or exam…','#examResultsList .item');mountSearch('profiles','Search student name or class…','#profileStudent option');}
+ function addProfilePanel(){if($('profiles'))return;const ws=$('workspace');if(!ws)return;const sec=document.createElement('section');sec.id='profiles';sec.className='panel hide';sec.innerHTML='<h2>Student Profiles</h2><div class="card"><label>Find student</label><input id="profileSearchBox" type="search" placeholder="Search by student name or class"><select id="profileStudent"><option value="">Select student</option></select><div id="profileDetails" style="margin-top:14px">Select a student to view the full profile.</div></div>';const nav=$('bottomNav');ws.insertBefore(sec,nav||null);$('profileSearchBox').addEventListener('input',()=>fillProfile());$('profileStudent').addEventListener('change',renderProfile);}
+ function fillProfile(){const sel=$('profileStudent');if(!sel)return;const q=($('profileSearchBox')?.value||'').toLowerCase(),old=sel.value;const list=getStudents().filter(s=>(s.name+' '+(s.className||'')).toLowerCase().includes(q)).sort((a,b)=>a.name.localeCompare(b.name));sel.innerHTML='<option value="">Select student ('+list.length+')</option>'+list.map(s=>'<option value="'+safe(s.id)+'">'+safe(s.name)+' — '+safe(s.className)+'</option>').join('');if(list.some(s=>s.id===old))sel.value=old;}
+ function renderProfile(){const id=$('profileStudent')?.value,s=getStudents().find(x=>x.id===id),box=$('profileDetails');if(!box)return;if(!s){box.textContent='Select a student to view the full profile.';return;}const rows=Object.entries(detailPayments).filter(([k])=>k.endsWith('_'+id)).sort((a,b)=>b[0].localeCompare(a[0]));const exams=window.smartExamRecords||[];const studentExams=exams.filter(x=>x.studentId===id).sort((a,b)=>(b.examDate||'').localeCompare(a.examDate||''));let paidTotal=0;const feeRows=rows.map(([key,d])=>{const ym=key.slice(0,7),amount=Number(d.amountPaid??(d.paid?s.fee:0));paidTotal+=amount;const status=d.paid?'Paid':'Unpaid';return '<div class="smart-table-row"><span>'+safe(ym)+'</span><span>'+money(amount)+' / '+money(s.fee)+' · <b>'+status+'</b></span></div>'}).join('');const examRows=studentExams.map(e=>'<div class="smart-table-row"><span>'+safe(e.examName)+' · '+safe(e.examDate)+'</span><b>'+safe(e.obtainedMarks)+'/'+safe(e.totalMarks)+' ('+safe(e.percentage)+'%)</b></div>').join('');box.innerHTML='<div class="item"><h3>'+safe(s.name)+'</h3><span class="pill">'+safe(s.className)+'</span><p>Parent: '+safe(s.parentName||'Not added')+' · Phone: '+safe(s.phone||'Not added')+'</p><p>Monthly fee: <b>'+money(s.fee)+'</b> · Total recorded received: <b>'+money(paidTotal)+'</b></p></div><h3>Month-wise fee history</h3>'+(feeRows||'<p class="muted">No saved payment history found. Existing legacy paid/unpaid records may not contain the actual amount.</p>')+'<h3 style="margin-top:18px">Test results</h3>'+(examRows||'<p class="muted">No test results recorded.</p>')+'<div class="feature-actions"><button onclick="tab(\'students\');editStudent(\''+safe(s.id)+'\')">Edit student</button></div>';}
+ function renderReports(){if(!$('reports')||!$('reportMonth'))return;const ym=$('reportMonth').value||monthNow();$('reportMonth').value=ym;const ss=getStudents();let expected=0,collected=0,paid=0,unpaid=0;const rows=ss.map(s=>{const d=detailPayments[ym+'_'+s.id]||{},amount=Number(d.amountPaid??(d.paid?s.fee:0)),fee=Number(s.fee||0),status=d.paid?'Paid':'Unpaid';expected+=fee;collected+=amount;if(status==='Paid')paid++;else unpaid++;return {s,amount,fee,status}});const old=$('reports').querySelector('.card');if(!old)return;let panel=$('smartReportBody');if(!panel){panel=document.createElement('div');panel.id='smartReportBody';old.appendChild(panel)}const rate=expected?Math.min(100,Math.round(collected/expected*100)):0;panel.innerHTML='<div class="smart-report-grid"><div class="feature-kpi"><span>Students</span><b>'+ss.length+'</b></div><div class="feature-kpi"><span>Expected</span><b>'+money(expected)+'</b></div><div class="feature-kpi"><span>Collected</span><b>'+money(collected)+'</b></div><div class="feature-kpi"><span>Pending</span><b>'+money(Math.max(0,expected-collected))+'</b></div><div class="feature-kpi"><span>Paid</span><b>'+paid+'</b></div><div class="feature-kpi"><span>Unpaid</span><b>'+unpaid+'</b></div><div class="feature-kpi"><span>Collection rate</span><b>'+rate+'%</b></div></div><div class="bar" style="margin:14px 0"><div style="width:'+rate+'%"></div></div><h3>Student-wise fee report</h3>'+rows.map(x=>'<div class="smart-table-row"><span><b>'+safe(x.s.name)+'</b><br><small>'+safe(x.s.className)+'</small></span><span>'+money(x.amount)+' / '+money(x.fee)+'<br><b class="smart-status">'+x.status+'</b></span></div>').join('');}
+ function subscribeDetails(){if(!user||!db)return;if(detailUnsub)detailUnsub();detailUnsub=db.collection('teacherData').doc(user.uid).collection('payments').onSnapshot(s=>{detailPayments={};s.forEach(d=>detailPayments[d.id]=d.data()||{});window.smartPaymentDetails=detailPayments;renderProfile();renderReports();},e=>console.warn('Payment detail listener:',e));}
+ const oldRender=window.render;window.render=function(){if(typeof oldRender==='function')oldRender();enhanceQuick();addProfilePanel();attachSearches();fillProfile();renderProfile();renderReports();};
+ const oldStart=window.startWorkspace;window.startWorkspace=function(){if(typeof oldStart==='function')oldStart();subscribeDetails();setTimeout(migratePortalHistory,1800);};
+  async function migratePortalHistory(){try{if(!user||!db||!students.length)return;const base=db.collection('teacherData').doc(user.uid);for(const col of ['payments','attendance']){const snap=await base.collection(col).get();let batch=db.batch(),n=0;for(const d of snap.docs){const data=d.data()||{};if(data.studentId)continue;const id=students.find(st=>d.id.endsWith('_'+st.id))?.id;if(!id)continue;const prefix=d.id.slice(0,-(id.length+1));batch.set(d.ref,{studentId:id,...(col==='payments'?{month:prefix}:{date:prefix})},{merge:true});n++;if(n>=400){await batch.commit();batch=db.batch();n=0;}}if(n)await batch.commit();}}catch(e){console.warn('Portal history migration:',e);}}
+  window.migratePortalHistory=migratePortalHistory;
+ const oldTab=window.tab;window.tab=function(id){if(typeof oldTab==='function')oldTab(id);if(id==='profiles'){addProfilePanel();fillProfile();renderProfile();}if(id==='reports')renderReports();};
+ if($('reportMonth'))$('reportMonth').addEventListener('change',renderReports);
+})();
+</script>
+
+<script>
+// Display-only month formatting. Firebase authentication and account verification remain untouched.
+(function(){
+  'use strict';
+  function monthLabel(value){
+    const m=/^(\d{4})-(\d{2})$/.exec(String(value||''));
+    if(!m)return value||'current month';
+    return new Date(Number(m[1]),Number(m[2])-1,1).toLocaleDateString('en-US',{month:'long',year:'numeric'}).replace(' ','-');
+  }
+  const originalRender=window.render;
+  if(typeof originalRender==='function'){
+    window.render=function(){
+      const result=originalRender.apply(this,arguments);
+      const el=document.getElementById('dashboardMonth');
+      const month=document.getElementById('feeMonth');
+      if(el&&month)el.textContent='Overview for '+monthLabel(month.value);
+      return result;
+    };
+  }
+  const originalFeeMessage=window.feeMessage;
+  if(typeof originalFeeMessage==='function'){
+    window.feeMessage=function(student){
+      return originalFeeMessage.apply(this,arguments).replace(/\b(\d{4})-(\d{2})\b/g,function(_,y,m){return monthLabel(y+'-'+m);});
+    };
+  }
+})();
+</script>
+<script>
+// Enable installation as a Progressive Web App (PWA).
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch((error) => {
+      console.warn("Smart Tution service worker registration failed:", error);
+    });
+  });
+}
+</script>
+<script id="smart-tution-theme-controller">
+(function(){
+ 'use strict';
+ const drawer=document.getElementById('sideNavDrawer');
+ if(!drawer || document.getElementById('sideThemeArea')) return;
+ const area=document.createElement('section'); area.id='sideThemeArea';
+ area.innerHTML='<button type="button" id="sideThemeToggle" aria-expanded="false"><span>🎨 Themes</span><span id="sideThemeArrow">＋</span></button><div id="sideThemeChoices" aria-label="Available themes"><button type="button" data-theme-choice="royal"><i class="theme-swatch" style="background:linear-gradient(135deg,#315de8,#8759e9)"></i>Royal Blue</button><button type="button" data-theme-choice="ocean"><i class="theme-swatch" style="background:linear-gradient(135deg,#087da8,#4268d8)"></i>Ocean</button><button type="button" data-theme-choice="emerald"><i class="theme-swatch" style="background:linear-gradient(135deg,#16845b,#48a58a)"></i>Emerald</button><button type="button" data-theme-choice="rose"><i class="theme-swatch" style="background:linear-gradient(135deg,#c0447b,#8055c9)"></i>Rose</button></div>';
+ const nav=drawer.querySelector('.sideNavLinks'); if(nav) nav.insertAdjacentElement('afterend',area); else drawer.appendChild(area);
+ const choices=area.querySelector('#sideThemeChoices'), toggle=area.querySelector('#sideThemeToggle');
+ toggle.addEventListener('click',()=>{const open=choices.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));area.querySelector('#sideThemeArrow').textContent=open?'−':'＋';});
+ function apply(name){if(!['royal','ocean','emerald','rose'].includes(name))name='royal';document.body.setAttribute('data-app-theme',name);try{localStorage.setItem('smartTutionAppTheme',name);}catch(e){};choices.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===name)));const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=({royal:'#315de8',ocean:'#087da8',emerald:'#16845b',rose:'#c0447b'})[name];}
+ choices.addEventListener('click',e=>{const b=e.target.closest('[data-theme-choice]');if(b)apply(b.dataset.themeChoice);});
+ let saved='royal';try{saved=localStorage.getItem('smartTutionAppTheme')||'royal';}catch(e){}apply(saved);
+})();
+</script></body></html>
